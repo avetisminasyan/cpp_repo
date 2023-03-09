@@ -14,7 +14,7 @@ int main ()
 	{	
 		std::cout<<"Level-"<<i+1<<"random number-"<<st<<"-"<<end<<std::endl;
 		int r_random_numb=random_numb(st,end);
-//		std::cout<<"random_number"<<r_random_numb<<std::endl;
+		std::cout<<"random_number"<<r_random_numb<<std::endl;
 		while_cin(r_random_numb,st,i);
 		st=end;
 		end=st*10;
@@ -36,27 +36,21 @@ bool check_number (int r_n,int n,int st)
         int ns=r_n-n;
         int val1;
         val1=abs(ns);
-        //std::cout<<val1<<"mer tiv";
+       // std::cout<<val1<<"mer tiv";
         if(val1==0)
         {       
                 std::cout<<"dug gdeleq tiv"<<std::endl;
                 return true;
         }
-        if(val1>0 && val1<=st/2)
+        if(val1>0 && val1<=st)
         {
                 std::cout<<"shad taqe"<<std::endl;
                 return false;
         
         }
-	else if(val1>0 && val1==st)
-	{
-		std::cout<<"taqe"<<std::endl;
-		return false;
-	
-	}
         else if (val1>st)
         {
-               std::cout<<"paxe"<<std::endl;
+               std::cout<<"shad paxe"<<std::endl;
                 return false;
         
        	}
