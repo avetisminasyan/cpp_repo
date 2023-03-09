@@ -1,4 +1,4 @@
-#include:w <cstdlib>
+#include <cstdlib>
 #include <iostream>
 #include <ctime>
 
@@ -14,7 +14,7 @@ int main ()
 	{	
 		std::cout<<"Level-"<<i+1<<"random number-"<<st<<"-"<<end<<std::endl;
 		int r_random_numb=random_numb(st,end);
-		std::cout<<"random_number"<<r_random_numb<<std::endl;
+//		std::cout<<"random_number"<<r_random_numb<<std::endl;
 		while_cin(r_random_numb,st,i);
 		st=end;
 		end=st*10;
@@ -54,7 +54,7 @@ bool check_number (int r_n,int n,int st)
 		return false;
 	
 	}
-        else if (val1>st && val1<st*2)
+        else if (val1>st)
         {
                std::cout<<"paxe"<<std::endl;
                 return false;
