@@ -42,12 +42,17 @@ bool check_number (int r_n,int n,int st)
                 std::cout<<"dug gdeleq tiv"<<std::endl;
                 return true;
         }
-        if(val1>0 && val1<=st)
+        if(val1>0 && val1<=st/2)
         {
                 std::cout<<"shad taqe"<<std::endl;
                 return false;
         
         }
+	else if(val1>st/2 && val1<st)
+	{
+		std::cout<<"taqe"<<std::endl;
+		return false;
+	}
         else if (val1>st)
         {
                std::cout<<"shad paxe"<<std::endl;
