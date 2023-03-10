@@ -4,8 +4,8 @@
 
 int count[3]={};
 int random_numb(int st,int end);
-bool check_number(int r_n,int n,int st);
-void while_cin(int r_num,int st,int count_i);
+bool check_number(int r_n,int n,int st,int end);
+void while_cin(int r_num,int st,int end,int count_i);
 int main () 
 {
 	int st=10;
@@ -15,7 +15,7 @@ int main ()
 		std::cout<<"Level-"<<i+1<<"random number-"<<st<<"-"<<end<<std::endl;
 		int r_random_numb=random_numb(st,end);
 		std::cout<<"random_number"<<r_random_numb<<std::endl;
-		while_cin(r_random_numb,st,i);
+		while_cin(r_random_numb,st,end,i);
 		st=end;
 		end=st*10;
 	}
@@ -31,7 +31,7 @@ int random_numb(int st,int end)
 	return random_variable;
 }
 
-bool check_number (int r_n,int n,int st)
+bool check_number (int r_n,int n,int st,int end)
 {
         int ns=r_n-n;
         int val1;
@@ -53,18 +53,23 @@ bool check_number (int r_n,int n,int st)
 		std::cout<<"taqe"<<std::endl;
 		return false;
 	}
-        else if (val1>st)
+        else if (val1>st && val1<end/4)
         {
-               std::cout<<"shad paxe"<<std::endl;
+               std::cout<<"paxe"<<std::endl;
                 return false;
         
        	}
+	else if(val1>end/4)
+	{
+		std::cout<<"shad paxe"<<std::endl;
+	
+	}
         return false;
 
 }
 
 
-void while_cin(int r_num,int st,int count_i)
+void while_cin(int r_num,int st,int end,int count_i)
 {	
 	while (true)
 	{	
@@ -72,7 +77,7 @@ void while_cin(int r_num,int st,int count_i)
 		std::cout<<"Enter number-";
 		int inp;
 		std::cin>>inp;
-		if(check_number(r_num,inp,st)==true)
+		if(check_number(r_num,inp,st,end)==true)
 		{
 			break;
 		}
