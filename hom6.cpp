@@ -416,17 +416,41 @@ bool check_number (int r_n,int n)
 
 }*/
 //12
+/*int main()
+{
+	int num;
+	int st=0;
+	int mij=50;
+	std::cout<<"Enter number-";
+	std::cin>>num;
+	for(int i=0;i<7;i++)
+	{
+		std::cout<<"Your number is -"<<mij<<std::endl;
+		if(num==mij)
+		{
+			std::cout<<"dugq gdaq tiv"<<std::endl;
+			break;
+		}
+		int gl;
+		std::cout<<"(0)poqre,(1)mece-";
+		std::cin>>gl;
+		if(gl==1)
+		{	
+			st=mij;
+			mij=mij+(mij/2);
+			if(mij>100)
+			{
+				mij=100;
+			}
+		}
+		if(gl==0)
+		{	
+			mij=((mij-st)/2)+st;
+		}
 
-
-//hamakargich bdi gdni random number
-
-
-
-
-
-
-
-
+	}
+	return 0;
+}*/
 
 
 
@@ -467,13 +491,26 @@ void input_numbers()
 //14
 /*int main () 
 {
-	int num;
+	std::string num;
 	std::cout<<"Enter Decimal number-";
 	std::string b_num="";
 	std::cin>>num;
-	while(num!=0)
+	int num1;
+	bool flag=false;
+	if(num[0]=='-')
 	{
-		int g=num%2;
+		num=num.substr(1);
+		num1=stoi(num);
+		flag=true;
+
+	}
+	else
+	{
+		num1=stoi(num);
+	}
+	while(num1!=0)
+	{
+		int g=num1%2;
 		if(g==0)
 		{
 			b_num+='0';
@@ -482,9 +519,16 @@ void input_numbers()
 		{
 			b_num+='1';
 		}
-		num=num/2;
+		num1=num1/2;
+	}
+	if(flag)
+	{
+		std::cout<<"-"<<b_num<<std::endl;
+	}
+	else
+	{
+		std::cout<<b_num<<std::endl;
 	}	
-	std::cout<<b_num;
 	std::cout<<std::endl;
 	return 0;
 }*/
@@ -636,5 +680,48 @@ void num_armstrong(int num,int el_c)
 		std::cout<<sum<<",";
 	}
 }*/
-//19
 
+
+//19
+/*int arr[10];
+void r_numbers();
+int max_num();
+int main ()
+{
+	r_numbers();
+	int max_nums=max_num();
+	int max_el_count=0;
+	for(int i=0;i<10;i++)
+	{
+		if(arr[i]==max_nums)
+		{
+			max_el_count+=1;
+		}
+	}
+	std::cout<<max_nums<<"-"<<max_el_count<<std::endl;
+	return 0;
+
+}
+void r_numbers()
+{
+	for(int i=0;i<10;i++)
+	{	
+		int num;
+		std::cout<<"Enter number("<<i+1<<")-";
+		std::cin>>num;
+		arr[i]=num;
+	}
+}
+int max_num()
+{	
+	int max_el=arr[0];
+	for(int i=0;i<10;i++)
+	{
+		if(arr[i]>max_el)
+		{
+			max_el=arr[i];
+		}
+
+	}
+	return max_el;
+}*/
