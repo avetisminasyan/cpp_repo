@@ -641,6 +641,39 @@ int num_el(int num)
 }*/
 
 //18
+/*nt factorial(int n);
+int main ()
+{
+	double long sum=1.0;
+	int num;
+	std::cout<<"Enter number-";
+	std::cin>>num;
+	for(int i=1;i<=num;i++)
+	{
+		double fact=factorial(i);
+		//std::cout<<fact<<std::endl;
+		double long  el=1.0/fact;
+		sum+=el;
+	}
+	std::cout<<sum<<std::endl;
+	return 0;
+
+
+}
+
+int factorial(int n)
+{
+	int sum=1;
+	for(int i=1;i<=n;i++)
+	{
+		sum*=i;
+	}
+	return sum;
+
+}*/
+
+
+//19
 
 /*int num_el(int num);
 void num_armstrong(int num,int el_c);
@@ -682,7 +715,7 @@ void num_armstrong(int num,int el_c)
 }*/
 
 
-//19
+//20
 /*int arr[10];
 void r_numbers();
 int max_num();
