@@ -418,38 +418,38 @@ bool check_number (int r_n,int n)
 //12
 /*int main()
 {
-	int num;
-	int st=0;
-	int mij=50;
+ 	int min, max;
+ 	min=0;
+ 	max=100;
+ 	int usernum;
 	std::cout<<"Enter number-";
-	std::cin>>num;
-	for(int i=0;i<7;i++)
+ 	std::cin >> usernum;
+ 	std::cout << std::endl;
+ 	int r_num, count = 1;
+ 	r_num = ( max + min ) / 2;
+	while(usernum!=r_num)
 	{
-		std::cout<<"Your number is -"<<mij<<std::endl;
-		if(num==mij)
+		std::cout<<"Computer number is-"<<r_num<<std::endl;
+		std::cout<< "\tIs your number higher? (y/n) : ";
+		char yesno;
+		std::cin>>yesno;
+		if(yesno=='y')
 		{
-			std::cout<<"dugq gdaq tiv"<<std::endl;
-			break;
+			min=r_num;
+			r_num=(r_num+max)/2;
 		}
-		int gl;
-		std::cout<<"(0)poqre,(1)mece-";
-		std::cin>>gl;
-		if(gl==1)
-		{	
-			st=mij;
-			mij=mij+(mij/2);
-			if(mij>100)
-			{
-				mij=100;
-			}
+		else if(yesno=='n')
+		{
+			max=r_num;
+			r_num=(min+r_num)/2;
 		}
-		if(gl==0)
-		{	
-			mij=((mij-st)/2)+st;
-		}
-
+		count+=1;
 	}
+	std::cout<<"Your number is-"<<r_num<<std::endl;
+	std::cout<<"Count-"<<count<<std::endl;
 	return 0;
+	
+
 }*/
 
 
