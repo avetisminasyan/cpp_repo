@@ -227,8 +227,25 @@ void sorting_el(int* n)
 	int num;
 	std::cout<<"Texasharzhi qanak-";
 	std::cin>>num;
-	int length=sizeof(arr)/sizeof(int);
-	
+	int ind=arr[0];
+	int ind1=arr[1];
+	for(int k=0;k<num;k++)
+	{
+		for(int i=0;i<9;i++)
+		{	
+			ind1=arr[i+1];
+			arr[i+1]=ind;
+			//count++;
+			ind=ind1;
+		}
+		arr[0]=ind;
+	}
+	for(int i=0;i<10;i++)
+	{
+		std::cout<<arr[i]<<",";
+	}
+	std::cout<<std::endl;
+	return 0;	
 }*/
 
 //7
@@ -734,7 +751,7 @@ bool find(std::string s1,std::string s2)
 }*/
 
 //16
-int main()
+/*int main()
 {
 	std::string str;
 	std::cout<<"Enter string-";
@@ -757,4 +774,4 @@ int main()
 	std::cout<<str1<<std::endl;
 	return 0;
 
-}
+}*/
