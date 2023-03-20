@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-int devide(int*,int,int);
+/*int devide(int*,int,int);
 int main()
 {
 	int arr[10]={1,2,5,8,15,22,27,31,34,38};
@@ -80,4 +80,48 @@ int devide(int* array,int count,int num)
 
 	}
 	return devides;
+}*/
+/*int find_el_ind(int*,int st,int end,int num);
+int main()
+{
+	int arr[10]={1,2,3,4,5,6,7,8,9,10};
+	int num;
+	std::cin>>num;
+	int ind=find_el_ind(arr,0,10,num);
+	std::cout<<ind<<std::endl;
+	return 0;
+
 }
+int find_el_ind(int* arr,int st,int end,int num)
+{
+	int els;
+	if(arr[st]==num)
+	{	
+		els=st;
+		return els;
+	}
+	else if(arr[end-1]==num)
+	{	
+		els=end-1;
+		return els;
+	}
+	else if((end-st)<2)
+	{	
+		els=-1;
+		return els;
+	}
+	else
+	{
+		int mid=(st+end)/2;
+		if(num>=arr[mid])
+		{
+			els=find_el_ind(arr,mid,end,num);
+	
+		}
+		else if(num<=arr[mid])
+		{	
+			els=find_el_ind(arr,st+1,mid,num);
+		}
+	}
+	return els;
+}*/
