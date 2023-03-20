@@ -249,7 +249,8 @@ void sorting_el(int* n)
 }*/
 
 //7
-/*int return_karg(int n);
+/*int zuyg_c(int n);
+int return_karg(int n);
 bool check_is_prime(int n);
 int six_dec(int n);
 int main()
@@ -271,12 +272,31 @@ int main()
 		}
 	}
 	int zer_c=six_dec(num);
-	int harevan_zuyg=0;
-	if(num%2!=0)
-	{
-		harevan_zuyg+=2;
-	}
+	int harevan_zuyg=zuyg_c(num);
+	std::cout<<harevan_zuyg<<"---"<<std::endl;
+	//if(num%2!=0)
+	//{
+	//	harevan_zuyg+=2;
+	//}
 	//std::cout<<zer_c<<std::endl;
+}
+int zuyg_c(int n)
+{	
+	int count=0;
+	while(n!=0)
+	{
+		int el=n%10;
+		n=n/10;
+		if(n!=0)
+		{
+			if(el%2==0 and (n%10)%2==0)
+			{
+				count+=1;
+			}
+		}
+	}
+	return count;
+
 }
 int return_karg(int n)
 {
