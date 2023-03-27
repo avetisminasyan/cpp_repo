@@ -11,12 +11,7 @@ class Human
 			this->name="Default_name";
 			this->surname="Default_surname";
 		}
-		virtual void get_name()
-		{
-			std::cout<<name<<",";
-			std::cout<<surname<<",";
-			std::cout<<age<<","<<std::endl;
-		}
+		virtual void get_name() =0;
 
 };
 class Employe:public Human
@@ -36,8 +31,12 @@ class Employe:public Human
 		{
 			this->company_name="";
 			this->salary=0;
+		}
+		void get_name() override
+		{
+			std::cout<<this->name;
 		}	
-};
+};	
 class staf:public Employe
 {	public:
 		int level;
