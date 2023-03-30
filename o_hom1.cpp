@@ -38,12 +38,13 @@ int main ()
 bool check_is_digit(std::string str)
 {
         bool a=true;
-        if(str[0]=='-')
+        for(int i=0;i<str.size();i++)
         {
-                a=true;
-        }
-        for(int i=1;i<str.size();i++)
-        {
+        	if(str[0]=='-')
+        	{
+                	a=true;
+			continue;
+        	}
                 if(!isdigit(str[i]))
                 {
                         a=false;
@@ -92,22 +93,23 @@ int main ()
 bool check_is_digit(std::string str)
 {
         bool a=true;
-        if(str[0]=='-')
+        for(int i=0;i<str.size();i++)
         {
-                a=true;
-		if(str[1]=='0')
+        	if(str[0]=='-')
+        	{
+                	a=true;
+			continue;
+			if(str[1]=='0')
+			{
+				a=false;
+				return a;
+			}
+        	}
+		else if(str[0]=='0')
 		{
 			a=false;
 			return a;
 		}
-        }
-	else if(str[0]=='0')
-	{
-		a=false;
-		return a;
-	}
-        for(int i=1;i<str.size();i++)
-        {
                 if(!isdigit(str[i]))
                 {
                         a=false;
