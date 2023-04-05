@@ -23,5 +23,7 @@ int main()
 	int els=arr[2];
 	arr.remove(8);
 	assert(arr[2]!=8);
+	SmartArray arr1(arr);
+	std::cout<<arr1.size()<<std::endl;
 	return 0;
 }

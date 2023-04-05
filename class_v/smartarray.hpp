@@ -7,6 +7,8 @@ class SmartArray
 		SmartArray( int el_count );
 		//destructor
 		~SmartArray();
+		//Copy constructor
+		SmartArray(const SmartArray& object );
 		//public print
 		void print();
 		//public push_back method
@@ -16,7 +18,9 @@ class SmartArray
 		//public size method
 		int size();
 		//public operator overloading
-		int& operator[] (int other) ;
+		int& operator[] ( int other );
+		//operator overloading =
+		SmartArray& operator=(const SmartArray& object );
 		//public insert method
 		void insert( int index, int value );
 		//public remove method

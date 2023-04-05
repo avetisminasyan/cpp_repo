@@ -21,6 +21,17 @@ SmartArray::SmartArray( int el_count )
 		exit(1);
 	}
 }
+//assigns values of member variables of one object to member variables of another object
+SmartArray::SmartArray(const SmartArray& object)
+{
+	this->m_capacity = object.m_capacity;
+	this->m_size = object.m_size;
+	this->m_array = new int[this->m_capacity];
+	for (int i=0;i<this->m_size;i++)
+	{
+		this->m_array[i] = object.m_array[i];
+	}
+}
 //destructor deletes dynamically array 
 SmartArray::~SmartArray()
 {
@@ -158,6 +169,20 @@ int& SmartArray::operator[]( int number )
 		exit(1);
 	}
         return m_array[number];
+}
+//assign operator = assigns values of member variables of one object to member variables of another object
+SmartArray& SmartArray::operator = ( const SmartArray& object )
+{
+	delete [] this->m_array;
+	this->m_capacity = object.m_capacity;
+	this->m_size = object.m_size;
+	this->m_array = new int [this->m_capacity];
+	for(int i = 0;i < this->m_size;i++)
+	{
+		m_array[i] = object.m_array[i];
+
+	}
+	return *this;
 }
 //deletes an element from the end of an array
 void SmartArray::pop_back ()
