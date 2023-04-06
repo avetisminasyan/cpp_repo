@@ -21,6 +21,25 @@ SmartArray::SmartArray( int el_count )
 		exit(1);
 	}
 }
+//constructor takes a list as an argument
+SmartArray::SmartArray(const std::initializer_list<int> &list):
+	SmartArray(list.size())
+	{
+		int count = 0;
+		for (auto &element : list)
+		{
+			++count;
+		}
+		m_size = count;
+		m_capacity = m_size*2;
+		m_array = new int [m_capacity];
+		count = 0;
+		for (auto &element : list)
+		{
+			m_array[count] = element;
+			++count;
+		}
+	}
 //assigns values of member variables of one object to member variables of another object
 SmartArray::SmartArray(const SmartArray& object)
 {

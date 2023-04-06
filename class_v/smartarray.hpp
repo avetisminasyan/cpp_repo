@@ -1,3 +1,4 @@
+#include <initializer_list>
 class SmartArray
 {
 	public:
@@ -7,6 +8,8 @@ class SmartArray
 		SmartArray( int el_count );
 		//destructor
 		~SmartArray();
+		//list initializer
+		SmartArray(const std::initializer_list<int> &list);
 		//Copy constructor
 		SmartArray(const SmartArray& object );
 		//public print

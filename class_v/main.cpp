@@ -25,5 +25,8 @@ int main()
 	assert(arr[2]!=8);
 	SmartArray arr1(arr);
 	std::cout<<arr1.size()<<std::endl;
+	SmartArray arr2{1,2,3,4,5,6,7,8,9};
+	std::cout<<arr2.size()<<std::endl;
+	std::cout<<arr2[3]<<std::endl;
 	return 0;
 }
