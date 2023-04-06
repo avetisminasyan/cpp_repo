@@ -1,5 +1,5 @@
 #include <iostream>
-#include "smartarray.hpp"
+#include "smart_array.hpp"
 //constructor without argument array size declared default 0
 SmartArray::SmartArray()
 {
@@ -101,19 +101,12 @@ void SmartArray::del(int index )
 {
 	if ( index >= 0 and index < m_size)
 	{
-		int* m_array1 = new int[(m_capacity-1)];
-		int el_ind = 0;
-		for( int i = 0;i<m_size;i++)
+		for( int i = index;i<m_size-1;i++)
 		{
-			if(i!=index)
-			{
-				m_array1[el_ind] = m_array[i];
-				el_ind++;
-			}
+			int i2 = m_array[i+1];
+			m_array[i]=i2;
 		}
 		m_size--;
-		delete m_array;
-		m_array=m_array1;	
 	}
 	else
 	{
@@ -141,19 +134,12 @@ void SmartArray::remove(int value )
 	}
 	if( ind!=-1  )
 	{
-		int* m_array1 = new int[m_capacity];
-		int el_ind = 0;
-		for( int i = 0;i<m_size;i++)
+		for( int i = ind;i<m_size-1;i++)
 		{
-			if(m_array[i]!=value)
-			{
-				m_array1[el_ind]=m_array[i];
-				el_ind++;
-			}
+			int i2 = m_array[i+1];
+			m_array[i] = i2;
 		}
 		m_size--;
-		delete m_array;
-		m_array=m_array1;	
 	}
 	else
 	{

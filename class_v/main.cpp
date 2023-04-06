@@ -1,5 +1,5 @@
 #include <iostream>
-#include "smartarray.hpp"
+#include "smart_array.hpp"
 #include <cassert>
 int main()
 {
@@ -27,6 +27,11 @@ int main()
 	std::cout<<arr1.size()<<std::endl;
 	SmartArray arr2{1,2,3,4,5,6,7,8,9};
 	std::cout<<arr2.size()<<std::endl;
-	std::cout<<arr2[3]<<std::endl;
+	arr2.del(3);
+	arr2.remove(8);
+	std::cout<<"---"<<std::endl;
+	arr2.print();
+	//std::cout<<arr2[3]<<std::endl;
+	//std::cout<<arr2[3]<<std::endl;
 	return 0;
 }
