@@ -8,8 +8,8 @@ SmartArray::SmartArray()
 	m_array = new int[m_capacity];
 }
 // constructor with argument where array element count  is equal argument
-SmartArray::SmartArray( int el_count )
-{	if(el_count > 0 )
+SmartArray::SmartArray(int el_count)
+{	if(el_count > 0)
 	{
 		m_size = el_count ;
 		m_capacity = el_count*2;
@@ -17,7 +17,7 @@ SmartArray::SmartArray( int el_count )
 	}
 	else
 	{
-		std::cout<<"array elements count  must be greater than 0"<<std::endl;
+		std::cout << "array elements count  must be greater than 0" << std::endl;
 		exit(1);
 	}
 }
@@ -43,12 +43,12 @@ SmartArray::SmartArray(const std::initializer_list<int> &list):
 //assigns values of member variables of one object to member variables of another object
 SmartArray::SmartArray(const SmartArray& object)
 {
-	this->m_capacity = object.m_capacity;
-	this->m_size = object.m_size;
-	this->m_array = new int[this->m_capacity];
-	for (int i=0;i<this->m_size;i++)
+	this -> m_capacity = object.m_capacity;
+	this -> m_size = object.m_size;
+	this -> m_array = new int[this -> m_capacity];
+	for (int i = 0;i < this -> m_size;i++)
 	{
-		this->m_array[i] = object.m_array[i];
+		this -> m_array[i] = object.m_array[i];
 	}
 }
 //destructor deletes dynamically array 
@@ -57,7 +57,7 @@ SmartArray::~SmartArray()
 	delete [] m_array;
 }
 // increases dynamic array size 2 times
-void SmartArray::change_capacity ( int value  )
+void SmartArray::change_capacity (int value)
 {	
 	 	m_capacity = m_capacity*2;
                 int* m_array1 = new int[m_capacity];
@@ -65,7 +65,7 @@ void SmartArray::change_capacity ( int value  )
                 {
                         m_array1[i] = m_array[i];
                 }
-                m_array1[ m_size ] = value;
+                m_array1[m_size] = value;
                 m_size++;
                 delete [] m_array;
                 m_array = m_array1;
@@ -75,7 +75,7 @@ void SmartArray::print()
 {
 	for( int i = 0; i < m_size; i++ )
 	{
-		std::cout << m_array[i]<<std::endl;
+		std::cout << m_array[i] << std::endl;
 	}
 }
 //returns array elements count
@@ -83,16 +83,63 @@ int SmartArray::size()
 {
 	return this -> m_size;
 }
-//equalizes  array index to  value
+//if the index is less than m_size index value is equal to the value we gave, we shift the remaining elements one index to the right
 void SmartArray::insert( int index, int value  )
 {
-	if ( index>=0 and index < m_size )
+	if ( index >= 0 and index < m_size )
 	{
-		m_array[index] = value;
+		if(m_size<m_capacity-1)
+		{	
+			int* m_array1 = new int[m_capacity];
+			int count = 0;
+			for(int i = 0;i<m_size+1;i++)
+			{	
+				if (index == i)
+				{
+					continue;
+				}
+				m_array1[i] = m_array[count];
+				count++;
+				
+			}
+			m_array1[index] = value;
+			delete [] m_array;
+			m_array = m_array1;
+			m_size++;
+		}
+		else
+		{	
+			m_capacity = m_size*2;
+			int * m_array1 = new int [m_capacity];
+			for(int i = 0;i < m_size;i++)
+			{
+				m_array1[i] = m_array[i];
+			}
+			delete m_array;
+			m_array = m_array1;
+			m_array1 = new int[m_capacity];
+			int count = 0;
+			for(int i = 0;i<m_size+1;i++)
+			{	
+				if (index == i)
+				{
+					continue;
+				}
+				m_array1[i] = m_array[count];
+				count++;
+				
+			}
+			m_array1[index] = value;
+			delete [] m_array;
+			m_array = m_array1;
+			m_size++;
+				
+		}
 	}
 	else
 	{
-		std::cout<<"INDEX out of range"<<std::endl;
+		std::cout << "INDEX out of range" << std::endl;
+		exit(1);
 	}
 
 }
@@ -101,22 +148,22 @@ void SmartArray::del(int index )
 {
 	if ( index >= 0 and index < m_size)
 	{
-		for( int i = index;i<m_size-1;i++)
+		for( int i = index;i < m_size-1;i++)
 		{
 			int i2 = m_array[i+1];
-			m_array[i]=i2;
+			m_array[i] = m_array[i+1];
 		}
 		m_size--;
 	}
 	else
 	{
-		std::cout<<"INDEX out of range"<<std::endl;
+		std::cout << "INDEX out of range" << std::endl;
 		exit(1);
 	}
 
 }
 //deleted given value from array
-void SmartArray::remove(int value )
+void SmartArray::remove(int value)
 {
 	if(!m_size > 0)
 	{
@@ -124,7 +171,7 @@ void SmartArray::remove(int value )
 		exit(1);
 	}
 	int ind = -1;
-	for(int i =0;i<m_size;i++)
+	for(int i = 0;i < m_size;i++)
 	{
 		if ( m_array[i] == value )
 		{
@@ -136,24 +183,23 @@ void SmartArray::remove(int value )
 	{
 		for( int i = ind;i<m_size-1;i++)
 		{
-			int i2 = m_array[i+1];
-			m_array[i] = i2;
+			m_array[i] = m_array[i+1];
 		}
 		m_size--;
 	}
 	else
 	{
-		std::cout<<value<<"-Not found in array"<<std::endl;
+		std::cout << value << "-Not found in array" << std::endl;
 		exit(1);
 	}
 	
 }
 //adding element  end of array
-void SmartArray::push_back ( int value  )
+void SmartArray::push_back (int value)
 {
-	if ( !m_size < m_capacity)
+	if (!(m_size < m_capacity))
 	{
-		change_capacity( value  );
+		change_capacity(value);
 	}
 	else
 	{
@@ -161,28 +207,28 @@ void SmartArray::push_back ( int value  )
 		m_size++;
 	}
 }
-
-int& SmartArray::operator[]( int number )
+//assigns the index to our value
+int& SmartArray::operator[](int number)
 {
-	if( number >= 0 and  number< m_size )
+	if(number >= 0 and  number < m_size)
 	{
 		return m_array[number];
 	}
 	else
 	{
-		std::cout<<"INDEX out of range"<<std::endl;
+		std::cout << "INDEX out of range" << std::endl;
 		exit(1);
 	}
         return m_array[number];
 }
 //assign operator = assigns values of member variables of one object to member variables of another object
-SmartArray& SmartArray::operator = ( const SmartArray& object )
+SmartArray& SmartArray::operator = (const SmartArray& object)
 {
-	delete [] this->m_array;
-	this->m_capacity = object.m_capacity;
-	this->m_size = object.m_size;
-	this->m_array = new int [this->m_capacity];
-	for(int i = 0;i < this->m_size;i++)
+	delete [] this -> m_array;
+	this -> m_capacity = object.m_capacity;
+	this -> m_size = object.m_size;
+	this -> m_array = new int [this -> m_capacity];
+	for(int i = 0;i < this -> m_size;i++)
 	{
 		m_array[i] = object.m_array[i];
 
@@ -194,7 +240,7 @@ void SmartArray::pop_back ()
 {
 	if(m_size<1)
 	{
-		std::cout<<"Array is empty"<<std::endl;
+		std::cout << "Array is empty" << std::endl;
 		exit(1);
 	}
 	m_array[m_size-1] = 0;

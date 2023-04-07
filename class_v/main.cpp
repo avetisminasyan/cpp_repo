@@ -7,31 +7,26 @@ int main()
 	arr.push_back(12);
 	arr.push_back(13);
 	arr.push_back(14);
-	arr.push_back(8);
-	arr.push_back(16);
-	arr.push_back(15);
-	arr.push_back(13);
+	arr.insert(1,68);
+	//checking arr elements count
+	assert(arr.size()==4);
+	//cheching arr[1] is equal 68
+	assert(arr[1]==68);
+	arr.del(1);
+	//checking arr[1] is not equal 68
+	assert(arr[1]!=68);
 	arr.push_back(25);
-	assert(arr.size()==8);
+	arr.push_back(78);
+	arr.remove(25);
+	//checking arr[3] is not equal 25
+	assert(arr[3]!=25);
+	arr.push_back(125);
+	//checking arr last element is 125
+	int size=arr.size();
+	assert(arr[size-1]==125);
 	arr.pop_back();
-	assert(arr.size()==7);
-	arr.insert(2,18);
-	assert(arr[2]==18);
-	arr.del(0);
-	assert(arr[0]==13);
-	assert(arr.size()==6);
-	int els=arr[2];
-	arr.remove(8);
-	assert(arr[2]!=8);
-	SmartArray arr1(arr);
-	std::cout<<arr1.size()<<std::endl;
-	SmartArray arr2{1,2,3,4,5,6,7,8,9};
-	std::cout<<arr2.size()<<std::endl;
-	arr2.del(3);
-	arr2.remove(8);
-	std::cout<<"---"<<std::endl;
-	arr2.print();
-	//std::cout<<arr2[3]<<std::endl;
-	//std::cout<<arr2[3]<<std::endl;
+	size=arr.size();
+	//checking arr last element is not equal 125
+	assert(arr[size-1]!=125);
 	return 0;
 }
