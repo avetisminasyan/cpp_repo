@@ -38,7 +38,7 @@ class SmartArray
 		//dynamic array size
 		int  m_capacity;
 		//dymanic array size changer
-		void change_capacity(int value);
+		void change_capacity();
 
 
 };

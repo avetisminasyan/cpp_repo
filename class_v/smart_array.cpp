@@ -57,7 +57,7 @@ SmartArray::~SmartArray()
 	delete [] m_array;
 }
 // increases dynamic array size 2 times
-void SmartArray::change_capacity (int value)
+void SmartArray::change_capacity ()
 {	
 	 	m_capacity = m_capacity*2;
                 int* m_array1 = new int[m_capacity];
@@ -65,8 +65,6 @@ void SmartArray::change_capacity (int value)
                 {
                         m_array1[i] = m_array[i];
                 }
-                m_array1[m_size] = value;
-                m_size++;
                 delete [] m_array;
                 m_array = m_array1;
 }
@@ -109,15 +107,8 @@ void SmartArray::insert( int index, int value  )
 		}
 		else
 		{	
-			m_capacity = m_size*2;
-			int * m_array1 = new int [m_capacity];
-			for(int i = 0;i < m_size;i++)
-			{
-				m_array1[i] = m_array[i];
-			}
-			delete m_array;
-			m_array = m_array1;
-			m_array1 = new int[m_capacity];
+			change_capacity();
+			int* m_array1 = new int[m_capacity];
 			int count = 0;
 			for(int i = 0;i<m_size+1;i++)
 			{	
@@ -150,7 +141,6 @@ void SmartArray::del(int index )
 	{
 		for( int i = index;i < m_size-1;i++)
 		{
-			int i2 = m_array[i+1];
 			m_array[i] = m_array[i+1];
 		}
 		m_size--;
@@ -181,11 +171,7 @@ void SmartArray::remove(int value)
 	}
 	if( ind!=-1  )
 	{
-		for( int i = ind;i<m_size-1;i++)
-		{
-			m_array[i] = m_array[i+1];
-		}
-		m_size--;
+		del(ind);
 	}
 	else
 	{
@@ -199,7 +185,10 @@ void SmartArray::push_back (int value)
 {
 	if (!(m_size < m_capacity))
 	{
-		change_capacity(value);
+		change_capacity();
+		m_array[m_size] = value;
+		m_size++;
+
 	}
 	else
 	{
