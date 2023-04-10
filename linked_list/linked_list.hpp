@@ -25,7 +25,7 @@ class LinkedList
 		void pop_back();
 
 	private:
-		//linkedlist first element pointer
+		// list first element pointer
 		node* first;
 
 };
