@@ -4,10 +4,9 @@
 int main ()
 {
 	LinkedList obj;
-	//std::cout<<obj.is_empty()<<std::endl;
-	obj.push_back(65);
-	obj.push_back(78);
-	obj.push_back(18);
+	obj.push_back(2);
+	obj.push_back(5);
+	obj.push_back(3);
 	assert(obj.get_size() == 3);
 	obj.push_back(16);
 	assert(obj.get_size() == 4);
