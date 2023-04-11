@@ -261,7 +261,6 @@ int& LinkedList::operator [] (int index)
 		{	//std::cout<<(*n).data<<std::endl;
 			n = n -> next;
 		}
-		return n -> data;
 	}
 	return n -> data;
 	
