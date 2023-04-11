@@ -31,8 +31,10 @@ class LinkedList
 		void print();
 		//delete last element in list
 		void pop_back();
-		//operator overladoing = 
+		//operator overloading  = 
 		LinkedList& operator = (const LinkedList& object);
+		//operator overloading []
+		int& operator [] (int index);
 
 	private:
 		// list first element pointer

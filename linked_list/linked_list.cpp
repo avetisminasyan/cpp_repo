@@ -251,3 +251,18 @@ LinkedList& LinkedList::operator = (const LinkedList& object)
 	return *this;
 
 }
+int& LinkedList::operator [] (int index)
+{
+	
+	node* n = first;
+	if(index >0 and index < get_size())
+	{
+		for(int i = 0; i<index;i++)
+		{	//std::cout<<(*n).data<<std::endl;
+			n = n -> next;
+		}
+		return n -> data;
+	}
+	return n -> data;
+	
+}
