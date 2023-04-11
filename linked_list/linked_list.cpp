@@ -5,7 +5,7 @@ LinkedList::LinkedList()
 {
 	first=nullptr;
 }
-//Copy Constructor
+//assigns values of member variables of one object to member variables of another object
 LinkedList::LinkedList(const LinkedList& object)
 {
 	node * n = object.first;
@@ -223,6 +223,7 @@ void LinkedList::remove(int value)
 	}
 
 }
+//assign operator = assigns values of member variables of one object to member variables of another object
 LinkedList& LinkedList::operator = (const LinkedList& object)
 {
 	node * n = object.first;

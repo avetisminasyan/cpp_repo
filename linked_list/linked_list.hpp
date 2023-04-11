@@ -21,11 +21,11 @@ class LinkedList
 		bool is_empty();
 		//adding element end of linked_list
 		void push_back(int value);
-		//insert 
+		//insert  method
 		void insert(int index,int value);
 		//delete index element in list
 		void del(int index);
-		// remove 
+		// remove method
 		void remove(int value);
 		//print linked_list elements
 		void print();
