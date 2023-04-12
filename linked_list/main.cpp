@@ -10,7 +10,7 @@ int main ()
 	obj.push_back(15);
 	obj.push_back(17);
 	obj.push_back(19);
-	obj.push_back(21);
+	obj.push_back(22);
 	//cheching is obj element count equal 4
 	assert(obj.get_size()==4);
 	//delete obj last element and cheching size equal 3
