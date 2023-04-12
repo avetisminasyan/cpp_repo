@@ -1,9 +1,9 @@
 struct node
 {	
 	// int element
-	int data;
+	int m_data;
 	//next node type element pointer
-	node* next;
+	node* m_next;
 	
 };
 class LinkedList
@@ -19,18 +19,18 @@ class LinkedList
 		int get_size();
 		//checking is  list empty
 		bool is_empty();
-		//adding element end of linked_list
+		//adding element end of list
 		void push_back(int value);
-		//insert  method
-		void insert(int index,int value);
+		//insert  value in index of list
+		int insert(int index,int value);
 		//delete index element in list
-		void del(int index);
-		// remove method
+		int del(int index);
+		// remove element from list
 		void remove(int value);
 		//print linked_list elements
 		void print();
 		//delete last element in list
-		void pop_back();
+		int pop_back();
 		//operator overloading  = 
 		LinkedList& operator = (const LinkedList& object);
 		//operator overloading []
@@ -38,6 +38,6 @@ class LinkedList
 
 	private:
 		// list first element pointer
-		node* first;
+		node* m_first;
 
 };

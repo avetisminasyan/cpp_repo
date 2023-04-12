@@ -1,45 +1,44 @@
 #include <iostream>
 #include "linked_list.hpp"
-//deafult constructor where pointer first equal nullptr
+//deafult constructor which has no argument and m_first node type pointer equal nullptr 
 LinkedList::LinkedList()
 {
-	first=nullptr;
+	m_first=nullptr;
 }
 //assigns values of member variables of one object to member variables of another object
 LinkedList::LinkedList(const LinkedList& object)
 {
-	node * n = object.first;
+	node * n = object.m_first;
 	if( n == nullptr )
 	{
-		first = nullptr;
+		m_first = nullptr;
 	}
 	else
 	{
 		node* k = new node;
-		k -> data = n -> data;
-		k -> next = n -> next;
-		first = k;
-		node* e = first;
-		while (n -> next != nullptr)
+		k -> m_data = n -> m_data;
+		k -> m_next = n -> m_next;
+		m_first = k;
+		node* m_first_p = m_first;
+		while (n -> m_next != nullptr)
 		{
-			node* k = new node;
-			k -> data = n -> next -> data;
-			k -> next = n -> next -> next;
-			e -> next = k;
-			n = n -> next;
-			e = e -> next;
-		}
+			node* tmp = new node;
+			tmp -> m_data = n -> m_next -> m_data;
+			tmp -> m_next = n -> m_next -> m_next;
+			m_first_p -> m_next = tmp;
+			n = n -> m_next;
+			m_first_p = m_first_p -> m_next;
+		}	
 	}
 }
 //distructor with which we delete all dynamic node type elements
 LinkedList::~LinkedList()
 {
-	node* n = first;
+	node* n = m_first;
 	while(n != nullptr)
 	{
-		node* k = n -> next;
+		node* k = n -> m_next;
 		delete n ;
-		n = nullptr;
 		n = k;
 	}
 
@@ -47,7 +46,7 @@ LinkedList::~LinkedList()
 //cheking is our list element count equal zero
 bool LinkedList::is_empty()
 {
-	if (first == nullptr)
+	if (m_first == nullptr)
 	{
 		return true;
 	}
@@ -56,192 +55,197 @@ bool LinkedList::is_empty()
 // this function returns list element count
 int LinkedList::get_size()
 {
-	node* n = first;
+	node* n = m_first;
 	int c = 0;
 	while ( n != nullptr )
 	{
 		c++;
-		n = n -> next;
+		n = n -> m_next;
 	}
 	return c;
 }
-//adding element  in end of list
+//this function takes a number and adds that number to the end of the list
 void LinkedList::push_back(int value)
 {
-	node* n = first;
+	node* n = m_first;
 	node* k = new node;
-	k -> data = value;
-	k -> next = nullptr;
+	k -> m_data = value;
+	k -> m_next = nullptr;
 	if ( is_empty() )
 	{
-		first = k;
+		m_first = k;
 	}
 	else
 	{
-		while (n -> next != nullptr)
+		while (n -> m_next != nullptr)
 		{
-			n = n ->next;	
+			n = n ->m_next;	
 		}
-		n->next = k;
+		n->m_next = k;
 	
 	}
 }
 //print list all elements
 void LinkedList::print()
 {
-	node* n = first;
+	node* n = m_first;
 	while ( n != nullptr )
 	{
-		std::cout<<(*n).data<<std::endl;
-		n = n ->next;
+		std::cout<<(*n).m_data<<std::endl;
+		n = n ->m_next;
 	}
 
 }
-//deletes list last element
-void LinkedList::pop_back()
+//this function deletes list last element if list is not empty and returns delete number otherwise -1 
+int LinkedList::pop_back()
 {
+	int value = -1;
 	if( is_empty()  )
 	{
-		std::cout<<"list is empty"<<std::endl;
-		exit(1);
+		return value;
 	}
-	else if ( get_size() <= 1)
+	else if ( get_size() == 1)
 	{
-		first = nullptr;
+		value = m_first -> m_data;
+		m_first = nullptr;
+		return value;
 	}
 	else
 	{
-		node* n = first;
-		node* k = first;
-		while(n ->next != nullptr)
+		node* n = m_first;
+		node* k = m_first;
+		while(n -> m_next != nullptr)
 		{
 			k = n;
-			n = n ->next;
+			n = n -> m_next;
 		}
-		delete k -> next;
-		k -> next = nullptr;
+		delete k -> m_next;
+		k -> m_next = nullptr;
+		value = n -> m_data;
 	}
+	return value;
 }
 //if the index is less than m_size index value is equal to the value we gave, we shift the remaining elements one index to the right
-void LinkedList::insert(int index,int value)
+int LinkedList::insert(int index,int value)
 {
+	if(index < 0 and index >= get_size())
+	{
+		return -1;
+	
+	}
 	if(index == 0 and get_size() == 0 )
 	{
 		node* n = new node;
-		n -> data = value;
-		n ->next = nullptr;
-		first = n;
+		n -> m_data = value;
+		n -> m_next = nullptr;
+		m_first = n;
 	}
 	else if( index == 0 and index < get_size() )
 	{
 		node* n = new node;
-		n -> data = value;
-		n -> next = first;
-		first = n;
+		n -> m_data = value;
+		n -> m_next = m_first;
+		m_first = n;
 	}
-	else if (index >= 0 and index < get_size())
+	else if (index > 0 and index < get_size())
 	{
 		node* k = new node;
-		k -> data = value;
-		node * n = first;
+		k -> m_data = value;
+		node * n = m_first;
 		for ( int i = 0;i < index-1;i++)
 		{
-			n = n -> next;
+			n = n -> m_next;
 		}
-		k -> next = n -> next;
-		n -> next = k;
+		k -> m_next = n -> m_next;
+		n -> m_next = k;
 
 	
 	}
-	else
-	{
-		std::cout<<"INDEX out of range"<<std::endl;
-		exit(1);
-	}
-
-
+	return 1;
 }
-//deleted given index element from array
-void LinkedList::del(int index)
+//deleted given index element from array and return element otherwise -1
+int LinkedList::del(int index)
 {
-
+	int value = -1;
+	if (index < 0 or index>=get_size())
+	{
+		return value;
+	}
 	if (index == 0 and index < get_size())
 	{
-		node* n  = first;
-		first = n -> next;
+		node* n  = m_first;
+		m_first = n -> m_next;
+		value = n -> m_data;
 		delete n;
 	}
 	else if (index > 0 and (index == get_size() - 1))
 	{
-		pop_back();
+		value = pop_back();
 	
 	}
 	else if (index > 0 and (index < get_size()-1))
 	{
-		node* n = first;
-		node* k = first;
+		node* n = m_first;
+		node* k = m_first;
 		for (int i = 0;i <index;i++)
 		{
 			k = n;
-			n = n -> next;
+			n = n -> m_next;
 		}
-		k -> next = n ->next;
+		value = n -> m_data;
+		k -> m_next = n -> m_next;
 		delete n;
 	}
-	else if (index < 0 or index>=get_size())
-	{
-		std::cout<<"INDEX out of range"<<std::endl;
-		exit(1);
-	}
+	return value;
 }
 //deleted given value from array
 void LinkedList::remove(int value)
 {
 	int ind = -1;
 	int c = 0;
-	node* n = first;
+	node* n = m_first;
 	while (n != nullptr)
 	{
-		if( n -> data == value)
+		if( n -> m_data == value)
 		{
 			ind = c;
 			break;
 		}
 		c++;
-		n = n -> next;
+		n = n -> m_next;
 
 	}
 	if (ind != -1)
 	{
 		del(ind);
 	}
-
 }
 //assign operator = assigns values of member variables of one object to member variables of another object
 LinkedList& LinkedList::operator = (const LinkedList& object)
 {
-	node * n = object.first;
+        node * n = object.m_first;
         if( n == nullptr )
         {
-                first = nullptr;
+                m_first = nullptr;
         }
         else
         {
                 node* k = new node;
-                k -> data = n -> data;
-                k -> next = n -> next;
-                first = k;
-                node* e = first;
-                while (n -> next != nullptr)
+                k -> m_data = n -> m_data;
+                k -> m_next = n -> m_next;
+                m_first = k;
+                node* m_first_p = m_first;
+                while (n -> m_next != nullptr)
                 {
-                        node* k = new node;
-                        k -> data = n -> next -> data;
-                        k -> next = n -> next -> next;
-                        e -> next = k;
-                        n = n -> next;
-                        e = e -> next;
+                        node* tmp = new node;
+                        tmp -> m_data = n -> m_next -> m_data;
+                        tmp -> m_next = n -> m_next -> m_next;
+                        m_first_p -> m_next = tmp;
+                        n = n -> m_next;
+                        m_first_p = m_first_p -> m_next;
                 }
         }
+
 	return *this;
 
 }
@@ -249,14 +253,14 @@ LinkedList& LinkedList::operator = (const LinkedList& object)
 int& LinkedList::operator [] (int index)
 {
 	
-	node* n = first;
+	node* n = m_first;
 	if(index >0 and index < get_size())
 	{
 		for(int i = 0; i<index;i++)
-		{	//std::cout<<(*n).data<<std::endl;
-			n = n -> next;
+		{
+			n = n -> m_next;
 		}
 	}
-	return n -> data;
+	return n -> m_data;
 	
 }
