@@ -4,11 +4,15 @@
 int main ()
 {
 	LinkedList obj;
+	assert(obj.is_empty()==true);
 	obj.push_back(2);
 	obj.push_back(5);
 	obj.push_back(3);
-	//std::cout<<obj[1]<<std::endl;
-	/*assert(obj.get_size() == 3);
+	obj.push_back(78);
+	obj.insert(3,15);
+	/*obj.del(2);
+	obj.print();
+	assert(obj.get_size() == 3);
 	obj.push_back(16);
 	assert(obj.get_size() == 4);
 	obj.pop_back();

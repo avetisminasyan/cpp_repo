@@ -78,19 +78,11 @@ void LinkedList::push_back(int value)
 	}
 	else
 	{
-		while (true)
+		while (n -> next != nullptr)
 		{
-			if( n ->next == nullptr )
-			{
-				n->next = k;
-				break;
-			}
-			else
-			{
-				n = n ->next;
-			}
-		
+			n = n ->next;	
 		}
+		n->next = k;
 	
 	}
 }
@@ -176,7 +168,8 @@ void LinkedList::del(int index)
 	if (index == 0 and index < get_size())
 	{
 		node* n  = first;
-		first = n  -> next;
+		first = n -> next;
+		delete n;
 	}
 	else if (index > 0 and (index == get_size() - 1))
 	{
@@ -193,6 +186,7 @@ void LinkedList::del(int index)
 			n = n -> next;
 		}
 		k -> next = n ->next;
+		delete n;
 	}
 	else if (index < 0 or index>=get_size())
 	{
@@ -251,6 +245,7 @@ LinkedList& LinkedList::operator = (const LinkedList& object)
 	return *this;
 
 }
+//assigns our value to the list index
 int& LinkedList::operator [] (int index)
 {
 	
