@@ -1,5 +1,12 @@
+#include <initializer_list>
+#include <string>
 struct node
-{	
+{ 	//default constructor	
+	node();
+	//constructor with argument where argument equal int
+	node(int value);
+	//constructor with arguments where arguments eqaul int and node type pointer
+	node (int value,node* next);
 	// int element
 	int m_data;
 	//next node type element pointer
@@ -13,7 +20,7 @@ class LinkedList
 		LinkedList();
 		//dectructor deleted all dynamtic node type elements
 		~LinkedList();
-		//Copy constructor
+		//copy constructor
 		LinkedList(const LinkedList& object);
 		//list element count
 		int get_size();
