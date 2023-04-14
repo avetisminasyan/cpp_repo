@@ -101,7 +101,7 @@ void LinkedList::print()
 	}
 
 }
-//this function deletes list last element if list is not empty and returns delete number otherwise -1 
+//this function deletes list last element if list is not empty and returns deleted number otherwise -1
 int LinkedList::pop_back()
 {
 	int value = -1;
@@ -130,7 +130,7 @@ int LinkedList::pop_back()
 	}
 	return value;
 }
-//if the index is less than m_size index value is equal to the value we gave, we shift the remaining elements one index to the right
+//if the index is less than the m_size index, the value of the m_size index is equal to the value we gave, we move the remaining elements to the right by one index and return 1. otherwise returns -1.
 int LinkedList::insert(int index,int value)
 {
 	if(index < 0 and index >= get_size())
@@ -161,7 +161,7 @@ int LinkedList::insert(int index,int value)
 	}
 	return 1;
 }
-//deleted given index element from array and return element otherwise -1
+//deletes the corresponding year of the given index from the array and returns the element otherwise -1
 int LinkedList::del(int index)
 {
 	int value = -1;
