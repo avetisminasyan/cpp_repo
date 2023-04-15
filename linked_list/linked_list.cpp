@@ -27,15 +27,11 @@ LinkedList::LinkedList(const LinkedList& object)
 	}
 	else
 	{
-		node* k = new node(n -> m_data,n -> m_next);
-		m_first = k;
-		node* m_first_p = m_first;
-		while (n -> m_next != nullptr)
+		m_first = nullptr;
+		while (n != nullptr)
 		{
-			node* tmp = new node(n -> m_next ->  m_data,n -> m_next -> m_next);
-			m_first_p -> m_next = tmp;
+			push_back(n -> m_data);
 			n = n -> m_next;
-			m_first_p = m_first_p -> m_next;
 		}	
 	}
 }
@@ -86,7 +82,7 @@ void LinkedList::push_back(int value)
 		{
 			n = n -> m_next;	
 		}
-		n->m_next = k;
+		n -> m_next = k;
 	
 	}
 }
@@ -112,6 +108,7 @@ int LinkedList::pop_back()
 	else if ( get_size() == 1)
 	{
 		value = m_first -> m_data;
+		delete m_first;
 		m_first = nullptr;
 		return value;
 	}
@@ -229,25 +226,23 @@ LinkedList& LinkedList::operator = (const LinkedList& object)
         else
         {
 		this ->~LinkedList();
-		node* k = new node(n -> m_data,n -> m_next);
-                m_first = k;
-                node* m_first_p = m_first;
-                while (n -> m_next != nullptr)
-                {
-                        node* tmp = new node(n -> m_next -> m_data,n -> m_next -> m_next);
-			m_first_p -> m_next = tmp;
-                        n = n -> m_next;
-                        m_first_p = m_first_p -> m_next;
-                }
+		m_first = nullptr;
+		while (n != nullptr)
+		{
+			push_back(n -> m_data);
+			n = n -> m_next;
+		}	
+		
         }
 	return *this;
 
 }
 //assigns our value to the list index
 int& LinkedList::operator [] (int index)
-{	
+{
+	assert(index >= 0 and  index <  get_size() && "INDEX out of range");	
 	node* n = m_first;
-	if(index >0 and index < get_size())
+	if(index >= 0 and index < get_size())
 	{
 		for(int i = 0; i<index;i++)
 		{
