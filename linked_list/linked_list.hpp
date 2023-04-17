@@ -36,6 +36,8 @@ class LinkedList
 		void remove(int value);
 		//print linked_list elements
 		void print();
+		//delete all elements from LinkedList
+		void del_all();
 		//delete last element in list
 		int pop_back();
 		//operator overloading  = 

@@ -46,6 +46,18 @@ LinkedList::~LinkedList()
 		n = k;
 	}
 }
+//delete all elements from Linkedlist
+void LinkedList::del_all()
+{
+	node* n = m_first;
+        while(n != nullptr)
+        {
+                node* k = n -> m_next;
+                delete n ;
+                n = k;
+        }
+	m_first = nullptr;
+}
 //cheking is our list element count equal zero
 bool LinkedList::is_empty()
 {
@@ -225,8 +237,8 @@ LinkedList& LinkedList::operator = (const LinkedList& object)
         }
         else
         {
-		this ->~LinkedList();
-		m_first = nullptr;
+
+		del_all();
 		while (n != nullptr)
 		{
 			push_back(n -> m_data);
