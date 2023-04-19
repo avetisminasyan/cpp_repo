@@ -3,7 +3,7 @@
 #include <cassert>
 int main()
 {
-	/*//create Stack type object s;
+	//create Stack type object s;
 	Stack s;
 	//chechking s is empty
 	assert(s.empty()==true);
@@ -26,6 +26,6 @@ int main()
 	//delete s top element
 	s.pop();
 	//chechking s top element not equal 4
-	assert(s.top() != 4);*/
+	assert(s.top() != 4);
 	return 0;
 }
