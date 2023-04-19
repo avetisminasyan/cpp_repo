@@ -7,17 +7,16 @@
 bool check_file_exist( std::string );
 bool check_is_digit( std::string str );
 int sum_digit_number( int n );
-bool file_read_write();
 int main (int argc,char* argv[] )
 {	
         int n;
         std::string n1;
         int s;
-	if (argc==1)
+	if ( argc==1)
 	{
         	std::cout << "Enter number-";
        		std::cin >> n1;
-        	if (check_is_digit(n1))
+        	if ( check_is_digit(n1) )
         	{
                 	n = stoi(n1);
         	}
@@ -30,15 +29,42 @@ int main (int argc,char* argv[] )
 		std::cout<<s<<std::endl;
 		return 0;
 	}
-	else if (argc==2 and std::string(argv[1])=="-t")
+	else if ( std::string(argv[1])=="-t" )
 	{
-		if(check_file_exist("args.txt"))
+		if( check_file_exist("args.txt") )
 		{
-			bool r =file_read_write();
-			if(!r)
+			std::ifstream file_a;
+			std::ofstream file_r;
+			if( !check_file_exist("returns.txt") )
 			{
 				return 1;
 			}
+			file_a.open("args.txt");
+			file_r.open("returns.txt");
+			std::string line;
+			while( !file_a.eof() )
+			{	
+				line = "";		
+				file_a >> line;
+				if( line.size() == 0 )
+				{
+					continue;
+				}
+				if( check_is_digit(line) )
+				{	
+					n = stoi(line);
+					s = sum_digit_number(n);
+					file_r << s << std::endl;
+				}
+				else
+				{
+					file_r << "error" << std::endl;	
+				}
+
+			}
+				file_a.close();
+				file_r.close();
+		
 		}
 		else
 		{
@@ -57,14 +83,14 @@ bool check_is_digit(std::string str)
 {
         bool a = true;
 	int count=0;
-        if (str[0] == '-')
+        if (str[0] == '-' )
         {
                a = true;
                count++;
         }
-        for (int i = count;i<str.size();i++)
+        for ( int i = count;i<str.size();i++)
         {
-                if (!isdigit(str[i]))
+                if ( !isdigit(str[i]) )
                 {
                         a = false;
                         return a;
@@ -74,10 +100,11 @@ bool check_is_digit(std::string str)
         }
         return a;
 }
-int sum_digit_number(int n)
+
+int sum_digit_number( int n )
 {
 	int s = 0;
-	while (n != 0)
+	while	(n != 0 )
         {
                 int l = n%10;
                 n = n / 10;
@@ -98,45 +125,9 @@ bool check_file_exist(std::string filename)
     }
     else
     {
-	std::cout << "File-"<<filename<<"does not exists" << std::endl;
+	std::cout << "File-"<<filename<<" does not exists" << std::endl;
 	file.close();
 	return false;
     }
 
 }
-
-bool file_read_write()
-{	
-	int n;
-	int s;
-	std::ifstream file_a;
-	std::ofstream file_r;
-	if(!check_file_exist("returns.txt"))
-	{
-		return false;
-	}
-	file_a.open("args.txt");
-	file_r.open("returns.txt");
-	std::string line;
-	while(!file_a.eof())
-	{	
-		line = "";		
-		file_a >> line;
-		if(line.size() == 0)
-		{
-			continue;
-		}
-		if(check_is_digit(line))
-		{	
-			n = stoi(line);
-			s = sum_digit_number(n);
-			file_r << s << std::endl;
-		}
-		else
-		{
-			file_r << "error" << std::endl;	
-		}
-	}
-	return true;
-}
-
