@@ -3,6 +3,8 @@ struct node
         node();
         //constructor with argument where argument equal int
         node(int value);
+	//constructor with arguments where arguments eqaul int and node type pointer
+	node (int value,node* next);
         // int element
         int m_data;
         //next node type element pointer
@@ -39,6 +41,6 @@ class Stack
 
         private:
                 // list first element pointer
-                node* m_first;
+                node* m_last;
 };
 

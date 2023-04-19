@@ -6,22 +6,28 @@ node::node( int value){
     m_data = value;
     m_next = nullptr;
 }
-//deafult constructor which has no argument and m_first node type pointer equal nullptr 
+node::node(int value,node* next)
+{
+    m_data = value;
+    m_next = next;
+
+}
+//deafult constructor which has no argument and m_last node type pointer equal nullptr 
 Stack::Stack()
 {
-        m_first=nullptr;
+        m_last=nullptr;
 }
 //assigns values of member variables of one object to member variables of another object
 Stack::Stack(const Stack& object)
 {
-        node * n = object.m_first;
+        node * n = object.m_last;
         if(n == nullptr)
         {
-                m_first = nullptr;
+                m_last = nullptr;
         }
         else
         {
-                m_first = nullptr;
+                m_last = nullptr;
                 while (n != nullptr)
                 {
                         push(n -> m_data);
@@ -32,7 +38,7 @@ Stack::Stack(const Stack& object)
 //distructor with which we delete all dynamic node type elements
 Stack::~Stack()
 {
-        node* n = m_first;
+        node* n = m_last;
         while(n != nullptr)
         {
                 node* k = n -> m_next;
@@ -43,7 +49,7 @@ Stack::~Stack()
 //Returns true if the stack is empty, or false if it is non-empty
 bool Stack::empty()
 {
-        if (m_first == nullptr)
+        if (m_last == nullptr)
         {
                 return true;
         }
@@ -52,7 +58,7 @@ bool Stack::empty()
 //Returns the size of the stack
 int Stack::size()
 {
-        node* n = m_first;
+        node* n = m_last;
         int c = 0;
         while ( n != nullptr )
         {
@@ -64,7 +70,7 @@ int Stack::size()
 //print Stack all elements
 void Stack::print()
 {
-        node* n = m_first;
+        node* n = m_last;
         while (n != nullptr)
         {
                 std::cout << n -> m_data << std::endl;
@@ -75,17 +81,12 @@ void Stack::print()
 //Returns the value of the top element on the stack
 int Stack::top()
 {
-	if(m_first == nullptr)
+	if(m_last == nullptr)
 	{
 		std::cout<<"Stack is empty"<<std::endl;
 		return -1;
 	}
-	node* n = m_first;
-        while(n -> m_next != nullptr)
-        {
-                 n = n -> m_next;
-        }
-	return n -> m_data;
+	return m_last -> m_data;
 }
 //Removes the top element from the stack, does not return a value
 void Stack::pop()
@@ -95,53 +96,51 @@ void Stack::pop()
                 return;
 
         }
-        node* n = m_first;
-        node* k = m_first;
-        while(n -> m_next != nullptr)
-        {
-               k = n;
-               n = n -> m_next;
-        }
-        delete k -> m_next;
-       	k -> m_next = nullptr;
+	else if(size() == 1)
+	{
+		m_last = nullptr;
+	}
+	else
+	{
+        	node* n = m_last;
+		m_last = n -> m_next;
+		delete n;
+	}
 }
 //Adds a new elem to the top of the stack
 void Stack::push(int value)
 {
-        node* n = m_first;
-        node* k = new node(value);
+        node* n = m_last;
         if (empty())
         {
-                m_first = k;
+        	node* k = new node(value);
+                m_last = k;
         }
         else
         {
-                while (n -> m_next != nullptr)
-                {
-                        n = n -> m_next;
-                }
-                n -> m_next = k;
+		node* k = new node(value,n);
+		m_last = k;
         }
 }
 //delete all elements from Stack
 void Stack::del_all()
 {
-        node* n = m_first;
+        node* n = m_last;
         while(n != nullptr)
         {
                 node* k = n -> m_next;
                 delete n ;
                 n = k;
         }
-        m_first = nullptr;
+        m_last = nullptr;
 }
 //assign operator = assigns values of member variables of one object to member variables of another object
 Stack& Stack::operator = (const Stack& object)
 {
-        node * n = object.m_first;
+        node * n = object.m_last;
         if(n == nullptr)
         {
-                m_first = nullptr;
+                m_last = nullptr;
         }
         else
         {
@@ -161,7 +160,7 @@ Stack& Stack::operator = (const Stack& object)
 int& Stack::operator [] (int index)
 {
         assert(index >= 0 and  index <  size() && "INDEX out of range");
-        node* n = m_first;
+        node* n = m_last;
         if(index >= 0 and index < size())
         {
                 for(int i = 0; i<index;i++)
