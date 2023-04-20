@@ -174,5 +174,4 @@ int& Queue::operator [] (int index)
                 }
         }
         return n -> m_data;
-
 }

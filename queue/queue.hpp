@@ -6,8 +6,7 @@ struct node
         // int element
         int m_data;
         //next node type element pointer
-        node* m_next;
-        
+        node* m_next;        
 };
 class Queue
 {
