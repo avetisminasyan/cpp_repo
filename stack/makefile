@@ -8,7 +8,7 @@ stack.o : stack.cpp stack.hpp
 	gcc -c $< -o $@
 .PHONY: clean
 clean:
-	rm -rf *.o a.out
+	rm -rf *.o $(EXE_FILE)
 .PHONY: test
 test: $(EXE_FILE)
 	./$(EXE_FILE)
