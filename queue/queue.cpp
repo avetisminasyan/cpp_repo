@@ -100,11 +100,7 @@ int Queue::back()
 //Removes the first element from the queue, does not return a value
 void Queue::pop()
 {
-	if (empty())
-	{
-		return;
-	
-	}
+	assert(!empty());
 	node* n  = m_first;
 	m_first = n -> m_next;
        	delete	n;
@@ -160,18 +156,4 @@ Queue& Queue::operator = (const Queue& object)
         }
         return *this;
 
-}
-//assigns our value to the list index
-int& Queue::operator [] (int index)
-{
-        assert(index >= 0 and  index <  size() && "INDEX out of range");
-        node* n = m_first;
-        if(index >= 0 and index < size())
-        {
-                for(int i = 0; i<index;i++)
-                {
-                        n = n -> m_next;
-                }
-        }
-        return n -> m_data;
 }
