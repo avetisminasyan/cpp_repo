@@ -1,6 +1,6 @@
 #include <iostream>
-#include "stack.hpp"
 #include <cassert>
+#include "stack.hpp"
 int main()
 {
 	//create Stack type object s;
