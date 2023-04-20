@@ -9,8 +9,7 @@ queue.o : queue.cpp queue.hpp
 
 .PHONY: clean
 clean:
-	rm -rf *.o a.out
-
+	rm -rf *.o $(EXE_FILE)
 .PHONY: test
 test: $(EXE_FILE)
 	./$(EXE_FILE)
