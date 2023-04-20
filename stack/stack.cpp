@@ -91,12 +91,8 @@ int Stack::top()
 //Removes the top element from the stack, does not return a value
 void Stack::pop()
 {
-        if (empty())
-        {
-                return;
-
-        }
-	else if(size() == 1)
+	assert(!empty() && "Stack is empty");
+	if(size() == 1)
 	{
 		m_last = nullptr;
 	}
@@ -154,20 +150,5 @@ Stack& Stack::operator = (const Stack& object)
 
         }
         return *this;
-
-}
-//assigns our value to the list index
-int& Stack::operator [] (int index)
-{
-        assert(index >= 0 and  index <  size() && "INDEX out of range");
-        node* n = m_last;
-        if(index >= 0 and index < size())
-        {
-                for(int i = 0; i<index;i++)
-                {
-                        n = n -> m_next;
-                }
-        }
-        return n -> m_data;
 
 }
