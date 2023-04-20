@@ -1,16 +1,15 @@
-export EXE_FILE := a.out
-$(EXE_FILE) : main.o stack.o
+export EXECUTABLE := a.out
+export SOURCE_FILES := $(wildcard *.cpp)
+export OBJ_FILES := $(patsubst %.cpp, %.o, $(SOURCE_FILES))
+$(EXECUTABLE) : $(OBJ_FILES)
 	gcc $^ -lm -lstdc++ -o $@
 
-main.o : main.cpp stack.hpp
+%.o : %.cpp %.hpp
 	gcc -c $< -o $@
-stack.o : stack.cpp stack.hpp
-	gcc -c $< -o $@
+
 .PHONY: clean
 clean:
-	rm -rf *.o $(EXE_FILE)
+	rm -rf *.o $(EXECUTABLE)
 .PHONY: test
-test: $(EXE_FILE)
-	./$(EXE_FILE)
-
-
+test: $(EXECUTABLE)
+	./$(EXECUTABLE)
