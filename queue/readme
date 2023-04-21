@@ -1,0 +1,9 @@
+1.Queue
+A queue is a data structure in which only the earliest added element is accessed.
+New elements are added to the end of the queue and removed from the front of the queue.
+The STL has a special queue container that implements this functionality.
+To use it, you need to include the queue header file:
+2.Makefile
+   make-We create an executable file with the make command
+   make run - Run the executable file with the make run command
+   make clean - With the make clean command, we delete all o extension files and executable files
