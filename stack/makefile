@@ -4,12 +4,12 @@ export OBJ_FILES := $(patsubst %.cpp, %.o, $(SOURCE_FILES))
 $(EXECUTABLE) : $(OBJ_FILES)
 	gcc $^ -lm -lstdc++ -o $@
 
-%.o : %.cpp %.hpp
+%.o : %.cpp stack.hpp
 	gcc -c $< -o $@
 
 .PHONY: clean
 clean:
 	rm -rf *.o $(EXECUTABLE)
-.PHONY: test
-test: $(EXECUTABLE)
+.PHONY: run
+run: $(EXECUTABLE)
 	./$(EXECUTABLE)
