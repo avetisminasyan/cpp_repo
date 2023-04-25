@@ -11,13 +11,13 @@ Stack::Stack()
 //assigns values of member variables of one object to member variables of another object
 Stack::Stack(const Stack& object)
 {
-	this -> m_capacity = object.m_capacity;
-	this -> m_size = object.m_size;
-	this -> m_array = new int[this -> m_capacity];
-	for (int i = 0;i < this -> m_size;i++)
-	{
-		this -> m_array[i] = object.m_array[i];
-	}
+     this -> m_capacity = object.m_capacity;
+     this -> m_size = object.m_size;
+     this -> m_array = new int[this -> m_capacity];
+     for (int i = 0;i < this -> m_size;i++)
+     {
+     	this -> m_array[i] = object.m_array[i];
+     }
 }
 //destructor deletes  stack
 Stack::~Stack()
