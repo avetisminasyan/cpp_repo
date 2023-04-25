@@ -1,7 +1,6 @@
 1.Stack
 A stack is a data structure in which only the last added element is accessed:
 new elements are added to the end of the stack, elements are also removed from the end of the stack, that is, when an element is removed from the stack, the last added element is removed.
-The STL has a special stack container that implements this functionality. To use it, you need to include the stack header file:
 2.Makefile
    make-We create an executable file with the make command
    make run - Run the executable file with the make run command
