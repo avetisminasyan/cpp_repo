@@ -1,0 +1,8 @@
+1.Double LinkedList using c++ template
+   A doubly linked list is one in which all nodes are linked together by multiple number of links which help in accessing both the successor node and predecessor node from the given node position.
+   It is bidirectional traversing.Each node in doubly linked list has two link fields, namely next and prev. These are used to point the successor and predecessor nodes.
+2.MakeFile
+	make-We create an executable file with the make command
+    	make run - Run the executable file with the make run command
+   	make clean - With the make clean command, we delete all o extension files and executable files
+
