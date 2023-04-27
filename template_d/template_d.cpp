@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cassert>
 template<typename T>
 struct node
 {	
@@ -108,6 +109,119 @@ class LinkedList
 				m_size++;
 			}
 			
+		}
+		//delete LinkedList last element
+		void pop_back()
+		{
+			assert(m_size != 0 && "LinkedList is empty");
+			if(m_size == 1)
+			{
+				delete m_first;
+				m_first = nullptr;
+				m_last = nullptr;
+				m_size--;
+			}
+			else if (m_size > 1)
+			{
+				node<T>* n  = m_last -> m_prev;
+				n -> m_next = nullptr;
+				delete m_last;
+				m_last = n;
+				m_size--;
+			}
+		}
+		//delete LinkedList first element
+		void pop_front()
+		{
+			assert(m_size != 0 && "LinkedList is empty");
+                        if(m_size == 1)
+                        {
+                                delete m_first;
+                                m_first = nullptr;
+                                m_last = nullptr;
+                                m_size--;
+                        }
+                        else if (m_size > 1)
+                        {
+                                node<T>* n = m_first -> m_next;
+                                delete m_first;
+				m_first = n;
+                                m_size--;
+                        }
+
+		
+		}
+		//if the index is less than the m_size index, the value of the m_size index is equal to the value we gave, we move the remaining elements to the right by one index and return 1. otherwise returns -1.
+		int insert(int index,T value)
+		{
+			if(index < 0 and index >= m_size)
+			{
+				return -1;
+	
+			}
+			if(index == 0 and m_size == 0 )
+			{
+				node<T>* n = new node(value);
+				n -> m_prev = nullptr;
+                                n -> m_next = nullptr;
+				m_first = n;
+				m_last = n;
+				m_size++;
+			}
+			else if(index == 0 and index < m_size)
+			{
+				node<T>* n = new node(value);
+				n -> m_next = m_first;
+				n -> m_prev = nullptr;
+				m_first = n;
+				m_size++;
+			}
+			else if (index > 0 and index < m_size)
+			{
+				node<T>* k = new node(value);
+				node<T>* n = m_first;
+				for (int i = 0;i < index-1;i++)
+				{
+					n = n -> m_next;
+				}
+				k -> m_next = n -> m_next;
+				k -> m_prev = n;
+				n -> m_next = k;
+				if(index == m_size-1)
+				{
+					m_last = k; 
+				}
+				m_size++;
+			}
+				return 1;
+			}
+		//assigns our value to the list index
+		T& operator [] (int index)
+		{
+			assert(index >= 0 and  index <  m_size  && "INDEX out of range");
+			node<T>* n = m_first;
+			if(index >= 0 and index < m_size)
+			{
+				for(int i = 0; i<index;i++)
+				{
+					n = n -> m_next;
+				}
+			}
+			return n -> m_data;
+		}
+		//function reverse reverses the order of the container elements in the range [first,last)
+		void reverse()
+		{
+			node<T>* n = m_last;
+			node<T>* e = m_first;
+			for(int i = 0;i<m_size/2;i++)
+			{
+				T value = n -> m_data;
+				n -> m_data = e -> m_data;
+				e -> m_data = value;
+				e = e -> m_next;
+				n = n -> m_prev;
+			}
 		}
 		//print LinkedList all elements
 		void print()
