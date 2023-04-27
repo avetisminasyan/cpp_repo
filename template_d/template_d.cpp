@@ -44,7 +44,7 @@ class LinkedList
 		//this function returns the first element of the LinkedList otherwise -1
 		T front()
 		{
-			if(m_size != 0)
+			if(m_first != nullptr)
 			{
 				return m_first -> m_data;
 
@@ -55,7 +55,7 @@ class LinkedList
 		//this function returns the last  element of the LinkedList otherwise -1
 		T back()
 		{
-			if(m_size != 0)
+			if(m_first != nullptr)
 			{
 				return m_last -> m_data;
 			}
@@ -64,7 +64,7 @@ class LinkedList
 		//this function adds an element to the beginning of the LinkedList
 		void push_front(T f_value)
 		{
-			if(m_size == 0)
+			if(m_first == nullptr)
 			{
 				node<T>* n = new node<T>(f_value);
 				n -> m_prev = nullptr;
@@ -88,7 +88,7 @@ class LinkedList
 		void push_back(T f_value )
 		{
 			
-			if(m_size == 0)
+			if(m_first == 0)
 			{
 				node<T>* n = new node<T>(f_value);
 				n -> m_prev = nullptr;
