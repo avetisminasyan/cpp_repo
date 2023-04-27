@@ -26,6 +26,7 @@ class LinkedList
 		LinkedList()
 		{
 			m_first = nullptr;
+			m_last = nullptr;
 			m_size = 0;
 		
 		}
@@ -56,15 +57,7 @@ class LinkedList
 		{
 			if(m_size != 0)
 			{
-				node<T>* n  = m_first;
-				while(n != nullptr)
-				{
-					if( n -> m_next == nullptr)
-					{
-						return n -> m_data;
-					}
-					n = n -> m_next;
-				}
+				return m_last -> m_data;
 			}
 			return -1;
 		}
@@ -77,6 +70,7 @@ class LinkedList
 				n -> m_prev = nullptr;
 				n -> m_next = nullptr;
 				m_first = n;
+				m_last = n;
 				m_size++;
 
 			}
@@ -100,20 +94,17 @@ class LinkedList
 				n -> m_prev = nullptr;
 				n -> m_next = nullptr;
 				m_first = n;
+				m_last = n;
 				m_size++;
 
 			}
 			else
 			{
-				node<T>* k = m_first;
-				while (k -> m_next  != nullptr)
-				{
-					k = k -> m_next;
-				}
 				node<T>* n = new node<T>(f_value);
 				n -> m_next = nullptr;
-				n -> m_prev = k;
-				k -> m_next = n;
+				n -> m_prev = m_last;
+				m_last -> m_next = n;
+				m_last = n;
 				m_size++;
 			}
 			
@@ -133,6 +124,8 @@ class LinkedList
 	private:
 		//LinkedList first element pointer
 		node<T>* m_first;
+		//LinkedList last element pointer
+		node<T>* m_last;
 		//LinkedList elements count
 		int   m_size;
 };
