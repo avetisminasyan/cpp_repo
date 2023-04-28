@@ -56,7 +56,7 @@ class LinkedList
 		//this function returns the last  element of the LinkedList otherwise -1
 		T back()
 		{
-			if(m_first != nullptr)
+			if(m_last != nullptr)
 			{
 				return m_last -> m_data;
 			}
@@ -186,11 +186,12 @@ class LinkedList
 				}
 				k -> m_next = n -> m_next;
 				k -> m_prev = n;
-				n -> m_next = k;
 				if(index == m_size-1)
 				{
-					m_last = k; 
+					m_last = n -> m_next;
+					m_last -> m_prev = k;
 				}
+				n -> m_next = k;
 				m_size++;
 			}
 				return 1;

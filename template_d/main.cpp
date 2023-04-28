@@ -22,10 +22,12 @@ int main()
 	//chechking if obj 2 index equal 'k'
 	assert(obj[2] == 'k');
 	//print all elements
-	obj.print();
+	//obj.print();
 	//reverse obj elements
 	obj.reverse();
 	assert(obj[0] == 'k');
+	//print all elements
+	//obj.print();
         return 0;
 
 }
