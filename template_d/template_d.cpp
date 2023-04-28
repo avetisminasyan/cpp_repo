@@ -80,6 +80,7 @@ class LinkedList
 				node<T>* n = new node<T>(f_value);
 				n -> m_prev = nullptr;
 				n -> m_next = m_first;
+				m_first -> m_prev = n;
 				m_first = n;
 				m_size++;
 			}
@@ -222,6 +223,43 @@ class LinkedList
 				e -> m_data = value;
 				e = e -> m_next;
 				n = n -> m_prev;
+			}
+		}
+		//sorting our LinkedList by bubbl_esort
+		void b_sort()
+		{
+			for(int i = 0;i < m_size;i++)
+			{
+				node<T>* n = m_first;
+				while( n -> m_next != nullptr)
+				{
+					if( n -> m_data > n -> m_next -> m_data)
+					{
+						T value = n -> m_next -> m_data;
+						n -> m_next -> m_data = n -> m_data;
+						n -> m_data = value;
+					}
+						n = n -> m_next;
+
+				}
+			}
+		}
+		//sorting our LinkedList by insertion sort
+		void i_sort()
+		{
+			T value;
+			node<T>* n = m_first -> m_next;
+			for(int i = 1; i<m_size;i++)
+			{
+				value = n -> m_data;
+                                node<T>* k = n -> m_prev;
+				while(k -> m_data > value and k -> m_prev != nullptr)
+				{
+					k -> m_next -> m_data = k -> m_data;
+					k = k -> m_prev;
+				}
+				k -> m_next ->  m_data  = value;
+				n = n -> m_next;
 			}
 		}
 		//print LinkedList all elements
