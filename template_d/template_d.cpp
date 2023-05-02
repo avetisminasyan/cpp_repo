@@ -252,7 +252,7 @@ class LinkedList
 			{
 				T value = n -> m_data;
 				node<T>* k = n->m_prev;
-				while ( k !=nullptr && k -> m_data > value)
+				while (k != nullptr and k -> m_data > value)
 				{
 					k -> m_next -> m_data = k -> m_data;
 					k = k -> m_prev;
