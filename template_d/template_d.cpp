@@ -244,21 +244,27 @@ class LinkedList
 				}
 			}
 		}
-		//sorting our LinkedList by insertion sort
+		//sorting our LinkedList by insertion_sort
 		void i_sort()
 		{
-			T value;
-			node<T>* n = m_first -> m_next;
-			for(int i = 1; i<m_size;i++)
+			node<T>* n = m_first->m_next;
+			for (int i = 1; i < m_size; i++)
 			{
-				value = n -> m_data;
-                                node<T>* k = n -> m_prev;
-				while(k -> m_data > value and k -> m_prev != nullptr)
+				T value = n -> m_data;
+				node<T>* k = n->m_prev;
+				while ( k !=nullptr && k -> m_data > value)
 				{
 					k -> m_next -> m_data = k -> m_data;
 					k = k -> m_prev;
 				}
-				k -> m_next ->  m_data  = value;
+				if (k == nullptr)
+				{
+					m_first->m_data = value;
+				}
+				else
+				{
+					k -> m_next -> m_data = value;
+				}
 				n = n -> m_next;
 			}
 		}
