@@ -1,0 +1,6 @@
+1.binary search tree
+A binary search tree is a binary tree that has the additional properties that the value of the left child is less than the value of the parent, and the value ofthe right child is greater than the value of the parent for each tree node. Thatis, the data in the binary search tree is stored in sorted form. Each time a new node is inserted or an existing node removed, the sorted order of the tree is preserved. When searching for an element, the searched value is compared with the root. If the desired is greater than the root, then the search continues in the right child of the root, if less, then in the left, if equal, then the value is found and the search stops.
+2.Makefile
+   make-We create an executable file with the make command
+   make run - Run the executable file with the make run command
+   make clean - With the make clean command, we delete all o extension files and   executable files
