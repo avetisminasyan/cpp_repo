@@ -2,31 +2,81 @@
 #include <cstring>
 #include <cmath>
 #include <string>
+#include <ctime>
+#include <fstream>
 //1
-/*int main () 
-{
+/*bool check_is_digit(std::string str);
+int main () 
+{	
 	std::cout<<"Enter number-";
 	int num;
+	std::string num1;
 	int sum=0;
-	std::cin>>num;
+	std::cin>>num1;
+	if(check_is_digit(num1))
+	{
+		num=stoi(num1);
+	}
+	else
+	{
+	//	std::cout<<"INPUT is not digit"<<std::endl;
+		return 0;
+	}
 	while(num!=0)
 	{
 		int l_el=num%10;
 		num=num/10;
 		sum+=l_el;
 	}
+	int mij=sum;
+	sum=abs(mij);
 	std::cout<<sum<<std::endl;
+	std::string s = std::to_string(sum);
+	//std::cout<<s<<std::endl;
+//	fout<<s+'\n';
+//	fout.close();
 	return 0 ;
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	for(int i=0;i<str.size();i++)
+	{
+		if(str[0]=='-')
+		{
+			a=true;
+			continue;
+		}
+		if(!isdigit(str[i]))
+		{	
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
 //2
 
-/*int main ()
+/*bool check_is_digit(std::string str);
+int main ()
 {
 	
 	std::cout<<"Enter number-";
 	int num;
+	std::string num1;
 	int result=0;
-	std::cin>>num;
+	std::cin>>num1;
+	if(check_is_digit(num1))
+	{
+		num=stoi(num1);
+	}
+	else
+	{
+		std::cout<<"INPUT is not digit"<<std::endl;
+		return 0;
+	}
 	while(num!=0)
 	{
 				
@@ -35,8 +85,28 @@
 		result=result*10 + l_el;
 
 	}
+	std::cout<<num<<std::endl;
 	std::cout<<result<<std::endl;
 	return 0;
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
 //3
 
@@ -47,11 +117,16 @@ int main ()
 	int num;
 	std::cin>>num;
 	//bool check=check_is_prime(num);
+	if(num<0)
+	{
+		std::cout<<"Number will be >=0"<<std::endl;
+		return 0;
+	}
 	if (check_is_prime(num))
 	{
 		std::cout<<"INPUT NUMBER IS PRIME"<<std::endl;
 	}
-	for(int i=0;i<num;i++)
+	for(int i=2;i<num;i++)
 	{
 		//bool check=check_is_prime(i);
 		if(check_is_prime(i))
@@ -79,15 +154,30 @@ bool check_is_prime(int num)
 
 }*/
 //4
-
-/*int main ()
+/*bool check_is_digit(std::string str);
+int main ()
 {
 	
 	std::cout<<"Enter number-";
+	std::string input;
 	int num;
 	int result=0;
-	std::cin>>num;
+	std::cin>>input;
+	if(check_is_digit(input))
+	{
+		num=stoi(input);
+	}
+	else
+	{
+		std::cout<<"INPUT IS NOT  NUMBER"<<std::endl;
+		return 0;
+	}
 	int pal=num;
+	if(num<0)
+	{
+		std::cout<<"Tiv petqe lini mec havasar 0-ic"<<std::endl;
+		return 0;
+	}
 	while(num!=0)
 	{
 				
@@ -106,24 +196,59 @@ bool check_is_prime(int num)
 	}
 	//std::cout<<result<<std::endl;
 	return 0;
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[1]=='0')
+	{
+		a=false;
+		return a;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
 //5
-
-/*int concate(int a,int b);
+/*bool check_is_digit(std::string str);
+int concate(int a,int b);
 int main()
 {
 	std::cout<<"Enter number1-";
-	int a;
+	std::string a;
 	std::cin>>a;
 	std::cout<<"Enter number2-";
-	int b;
+	std::string b;
+	int a1,a2;
 	std::cin>>b;
-	int conc=concate(a,b);
+	if(check_is_digit(a) and check_is_digit(b))
+	{
+		a1=stoi(a);
+		a2=stoi(b);
+	}	
+	else
+	{
+		std::cout<<"INPUT  is not digit"<<std::endl;
+		return 0;
+	}	
+	if(a1<0 or a2<0)
+	{
+		std::cout<<"Number will be greather than 0"<<std::endl;
+		return 0;
+	}
+	int conc=concate(a1,a2);
 	std::cout<<conc<<std::endl;
 	return 0;
 
 }
-
 int concate(int a,int b)
 {
 	int bazm=1;
@@ -133,18 +258,49 @@ int concate(int a,int b)
 	}
 	return bazm*a+b;
 
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
 //6
-/*int main ()
+/*bool check_is_digit(std::string str);
+int main ()
 {
-	int num;
+	std::string num;
 	std::cout<<"Enter number-";
 	std::cin>>num;
+	int num1;
+	if(check_is_digit(num))
+	{
+		num1=stoi(num);
+		
+	}
+	else
+	{
+		std::cout<<"INPUT is not digit"<<std::endl;
+		return 0;
+	}
 	int sum=2;
 	bool flag=false;
-	while(sum<=num)
+	while(sum<=num1)
 	{
-		if(sum==num)
+		if(sum==num1)
 		{
 			flag=true;
 			break;
@@ -161,16 +317,54 @@ int concate(int a,int b)
 	}
 	return 0;
 
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
 //7
 
-/*int main ()
+/*bool check_is_digit(std::string str);
+int main ()
 {
-	int m,n;
+	std::string m1,n1;
 	std::cout<<"Enter number1-";
-	std::cin>>m;
+	std::cin>>m1;
 	std::cout<<"Enter number2-";
-	std::cin>>n;
+	std::cin>>n1;
+	int m,n;
+	if(check_is_digit(m1) and check_is_digit(n1))
+	{
+		m=stoi(m1);
+		n=stoi(n1);
+
+		
+	}
+	else
+	{
+		std::cout<<"INPUTS is not digit"<<std::endl;
+		return 0;
+	}
+	if(m<=0 or n<=0)
+	{
+		std::cout<<"NUMBERS wil be greather than 0"<<std::endl;
+		return 0;
+	}
 	for(int i=0;i<n;i++)
 	{
 		if(i==0 || i==n-1)
@@ -198,16 +392,57 @@ int concate(int a,int b)
 		}
 	}
 
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	if(str[0]=='0')
+	{
+		a=false;
+		return a;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
 //8
 
-/*int main ()
+/*bool check_is_digit(std::string str);
+int main ()
 {
 	int m,n;
+	std::string m1,n1;
 	std::cout<<"Enter number1-";
-	std::cin>>m;
+	std::cin>>m1;
 	std::cout<<"Enter number2-";
-	std::cin>>n;
+	std::cin>>n1;
+	if(check_is_digit(m1) and check_is_digit(n1))
+	{
+		m=stoi(m1);
+		n=stoi(n1);	
+	}
+	else
+	{
+		std::cout<<"INPUTS is not digit"<<std::endl;
+		return 0;
+	}
+	if(m<=0 or n<=0)
+	{
+		std::cout<<"NUMBERS wil be greather than 0"<<std::endl;
+		return 0;
+	}
 	for(int i=0;i<n;i++)
 	{
 		if(i==0 || i==n-1)
@@ -235,15 +470,50 @@ int concate(int a,int b)
 		}
 	}
 
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
 
 //9
-
-/*int main () 
+/*bool check_is_digit(std::string str);
+int main () 
 {
 	int a;
+	std::string a1;
 	std::cout<<"Enter number-";
-	std::cin>>a;
+	std::cin>>a1;
+	if(check_is_digit(a1))
+	{
+		a=stoi(a1);
+	}
+	else
+	{
+		std::cout<<"INPUTS is not digit"<<std::endl;
+		return 0;
+	}
+	if(a<=0)
+	{
+		std::cout<<"NUMBER wil be greather than 0"<<std::endl;
+		return 0;
+	}
+
 	int space=a-1;
 	for(int i=0;i<a;i++)
 	{
@@ -270,18 +540,52 @@ int concate(int a,int b)
 	
 
 	return 0;
-}*/
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
 
+		}
+
+	}
+	return a;
+}*/
 //10
 
-/*bool check_is_prime(int num);
+/*bool check_is_digit(std::string str);
+bool check_is_prime(int num);
 int space_c(int num);
 void triuncle(int space_c,int el_c);
 int main ()
 {
        int a;
+       std::string a1;
        std::cout<<"Enter number-";
-       std::cin>>a;
+       std::cin>>a1;
+       if(check_is_digit(a1))
+       {
+       		a=stoi(a1);
+       }
+       else
+	{
+		std::cout<<"INPUTS is not digit"<<std::endl;
+		return 0;
+	}
+	if(a<=0)
+	{
+		std::cout<<"NUMBER wil be greather than 0"<<std::endl;
+		return 0;
+	}
        int b=0;
        if (a%2!=0)
        {
@@ -329,18 +633,46 @@ void triuncle(int space_c,int el_c)
 	}
 	
 
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
-
 //11
-
 /*int random_numbers(int n);
+bool check_is_digit(std::string str);
 bool check_number(int,int);
 int main ()
 {	
 	
 	int num;
+	std::string num1;
 	std::cout<<"Enter number-";
-	std::cin>>num;
+	std::cin>>num1;
+	if(check_is_digit(num1))
+	{
+		num=stoi(num1);
+	}
+       	else
+	{
+		std::cout<<"INPUTS is not digit"<<std::endl;
+		return 0;
+	}
 	if(num>1)
 	{
 		int r_num=random_numbers(num);
@@ -351,8 +683,18 @@ int main ()
 		{	
 			count+=1;	
 			int num;
+			std::string num1;
 			std::cout<<"Enter number1-";
-			std::cin>>num;
+			std::cin>>num1;
+			if(check_is_digit(num1))
+			{
+				num=stoi(num1);
+			}
+       			else
+			{	
+				std::cout<<"INPUTS is not digit please input digit"<<std::endl;
+				continue;
+			}
 			bool as=check_number(r_num,num);
 			if(as==true)
 			{
@@ -366,7 +708,7 @@ int main ()
 	}
 	else
 	{
-		std::cout<<"Enter number greater than 1";
+		std::cout<<"Enter number will be greater than 1";
 	}
 	std::cout<<std::endl;
 	return 0;
@@ -400,6 +742,7 @@ bool check_number (int r_n,int n)
 	{
 		std::cout<<"taqe"<<std::endl;
 		return false;
+	}
 	else if(val1>10 && val1<=20)
 	{
 		std::cout<<"paxe"<<std::endl;
@@ -411,9 +754,27 @@ bool check_number (int r_n,int n)
 		return false;
 	}
 	
-	}
 	return false;
 
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
 //12
 /*int main()
@@ -443,6 +804,10 @@ bool check_number (int r_n,int n)
 			max=r_num;
 			r_num=(min+r_num)/2;
 		}
+		else
+		{
+			continue;
+		}
 		count+=1;
 	}
 	std::cout<<"Your number is-"<<r_num<<std::endl;
@@ -456,6 +821,7 @@ bool check_number (int r_n,int n)
 
 //13
 /*int arr[10]={};
+bool check_is_digit(std::string str);
 void input_numbers();
 int main ()
 {
@@ -473,8 +839,17 @@ void input_numbers()
 	while(true)
 	{
 		int a;
+		std::string a1;
 		std::cout<<"Enter number-";
-		std::cin>>a;
+		std::cin>>a1;
+		if(check_is_digit(a1))
+		{
+			a=stoi(a1);		
+		}
+		else
+		{
+			continue;
+		}
 		if(a==-1)
 		{
 			break;
@@ -486,15 +861,39 @@ void input_numbers()
 	}
 
 
-}*/
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
 
+		}
+
+	}
+	return a;
+}*/
 //14
-/*int main () 
+/*bool check_is_digit(std::string str);
+int main () 
 {
 	std::string num;
 	std::cout<<"Enter Decimal number-";
 	std::string b_num="";
 	std::cin>>num;
+	if(!check_is_digit(num))
+	{
+		std::cout<<"INPUT is not digit"<<std::endl;
+		return 0;
+	}
 	int num1;
 	bool flag=false;
 	if(num[0]=='-')
@@ -531,8 +930,26 @@ void input_numbers()
 	}	
 	std::cout<<std::endl;
 	return 0;
-}*/
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
 
+		}
+
+	}
+	return a;
+}*/
 //15
 /*int main ()
 {
@@ -554,7 +971,7 @@ void input_numbers()
 		}
 		else
 		{
-			std::cout<<"number is not binary"<<std::endl;
+			std::cout<<"INPUT is not binary"<<std::endl;
 			return 0;
 		}
 	}
@@ -576,11 +993,27 @@ void input_numbers()
 
 //16
 
-/*int main ()
+/*bool check_is_digit(std::string str);
+int main ()
 {
 	std::cout<<"fibonaci numbers count-";
+	std::string num1;
 	int num;
-	std::cin>>num;
+	std::cin>>num1;
+	if(check_is_digit(num1))
+	{
+		num=stoi(num1);
+	}
+	else
+	{
+		std::cout<<"INPUT is not digit"<<std::endl;
+		return 0;
+	}
+	if(num<=0)
+	{
+		std::cout<<"Number will be greather than 0"<<std::endl;
+		return 0;
+	}
 	int arr[num];
 	arr[0]=0;
 	arr[1]=1;
@@ -595,15 +1028,45 @@ void input_numbers()
 	std::cout<<arr[num-1]<<std::endl;
 	std::cout<<std::endl;
 
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
 
 //17
-/*int num_el(int num);
+/*bool check_is_digit(std::string str);
+int num_el(int num);
 int main () 
 {
 	int num;
+	std::string num1;
 	std::cout<<"Enter number-";
-	std::cin>>num;
+	std::cin>>num1;
+	if(check_is_digit(num1))
+	{
+		num=stoi(num1);
+	}
+	else
+	{
+		std::cout<<"INPUT is not digit"<<std::endl;
+		return  0;
+	}
 	int el=0;
 	int bazm=1;
 	int ret=num_el(num);
@@ -638,16 +1101,50 @@ int num_el(int num)
 		num=num/10;
 	}
 	return count;
-}*/
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	if(str[0]=='0')
+	{
+		a=false;
+		return a;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
 
+		}
+
+	}
+	return a;
+}*/
 //18
-/*nt factorial(int n);
+/*bool check_is_digit(std::string str);
+int factorial(int n);
 int main ()
 {
 	double long sum=1.0;
 	int num;
+	std::string num1;
 	std::cout<<"Enter number-";
-	std::cin>>num;
+	std::cin>>num1;
+	if(check_is_digit(num1))
+	{
+		num=stoi(num1);
+	}
+	else
+	{
+		std::cout<<"INPUT is not digit"<<std::endl;
+		return 0;
+	}
 	for(int i=1;i<=num;i++)
 	{
 		double fact=factorial(i);
@@ -670,11 +1167,32 @@ int factorial(int n)
 	}
 	return sum;
 
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	if(str[0]=='0')
+	{
+		a=false;
+		return a;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/
-
-
 //19
-
 /*int num_el(int num);
 void num_armstrong(int num,int el_c);
 int main () 
@@ -713,10 +1231,10 @@ void num_armstrong(int num,int el_c)
 		std::cout<<sum<<",";
 	}
 }*/
-
-
 //20
-/*int arr[10];
+
+/*bool check_is_digit(std::string str);
+int arr[10]={};
 void r_numbers();
 int max_num();
 int main ()
@@ -740,8 +1258,17 @@ void r_numbers()
 	for(int i=0;i<10;i++)
 	{	
 		int num;
+		std::string num1;
 		std::cout<<"Enter number("<<i+1<<")-";
-		std::cin>>num;
+		std::cin>>num1;
+		if(check_is_digit(num1))
+		{
+			num=stoi(num1);
+		}
+		else
+		{
+			continue;
+		}
 		arr[i]=num;
 	}
 }
@@ -757,4 +1284,28 @@ int max_num()
 
 	}
 	return max_el;
+}
+bool check_is_digit(std::string str)
+{
+	bool a=true;
+	if(str[0]=='-')
+	{
+		a=true;
+	}
+	if(str[0]=='0')
+	{
+		a=false;
+		return a;
+	}
+	for(int i=1;i<str.size();i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			a=false;
+			return a;
+
+		}
+
+	}
+	return a;
 }*/

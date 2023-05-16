@@ -1,5 +1,3 @@
-#include <initializer_list>
-#include <string>
 struct node
 { 	//default constructor	
 	node();

@@ -11,7 +11,7 @@ int main ()
 	obj.push_back(17);
 	obj.push_back(19);
 	obj.push_back(22);
-	//cheching is obj element count equal 4
+	/*//cheching is obj element count equal 4
 	assert(obj.get_size()==4);
 	//delete obj last element and cheching size equal 3
 	obj.pop_back();
@@ -33,6 +33,6 @@ int main ()
 	//cheching is obj1 list element count equal obj list element count
 	assert(obj1.get_size()==obj.get_size());
 	//cheching is obj1 1 index element equal obj 1 index element
-	assert(obj1[1]==obj[1]);
+	assert(obj1[1]==obj[1]);*/
 	return 0;
 }

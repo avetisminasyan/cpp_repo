@@ -28,7 +28,7 @@ int main()
 	return 0;
 }*/
 
-struct triangle
+/*struct triangle
 {
 	int x;
 	int y;
@@ -50,5 +50,5 @@ int main()
 	}
 	//std::cout<<pay1<<std::endl;
 	return 0;
-}
+}*/
 

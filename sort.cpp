@@ -1,14 +1,14 @@
 #include <iostream>
 #include <cstring>
-int arr[8]={8,5,2,7,6,10,1,3};
+int arr[9]={8,5,2,7,6,10,11,3,25};
 bool check_is(int);
 int* devide(int*,int);
 int* sort(int* ,int* );
 int main()
 {
-	int array[8]={8,5,2,7,6,10,1,3};
-	int* p=devide(array,8);
-	for(int i=0;i<8;i++)
+	int array[9]={8,5,2,7,6,10,11,3,25};
+	int* p=devide(array,sizeof(array)/sizeof(int));
+	for(int i=0;i<9;i++)
 	{
 		std::cout<<p[i]<<",";
 	}
@@ -124,7 +124,7 @@ int* sort(int* array1, int* array2)
 }
 bool check_is(int num)
 {
-	for(int i=0;i<8;i++)
+	for(int i=0;i<sizeof(arr)/sizeof(int);i++)
 	{
 		if (num==arr[i])
 		{

@@ -48,12 +48,12 @@ bool check_number (int r_n,int n,int st,int end)
                 return false;
         
         }
-	else if(val1>st/2 && val1<st)
+	else if(val1>st/2 && val1<=st)
 	{
 		std::cout<<"taqe"<<std::endl;
 		return false;
 	}
-        else if (val1>st && val1<end/4)
+        else if (val1>st && val1<=end/4)
         {
                std::cout<<"paxe"<<std::endl;
                 return false;
@@ -67,8 +67,6 @@ bool check_number (int r_n,int n,int st,int end)
         return false;
 
 }
-
-
 void while_cin(int r_num,int st,int end,int count_i)
 {	
 	while (true)

@@ -23,7 +23,7 @@ class smartarray
 		{
 			try
 			{
-				if (other<this->c)
+				if (other < this->c and other>=0)
 				{
 					return p[other];
 				}
@@ -36,7 +36,7 @@ class smartarray
 			catch (const char* str)
 			{
 				std::cout<<str<<std::endl;
-				exit(0);	
+				exit(1);	
 			}
 			return p[other];
 		}
@@ -81,12 +81,12 @@ class smartarray
 			{
 			
 				std::cout<<"Array is empty"<<std::endl;
-				exit(0);
+				exit(1);
 			}
 			else
 			{
 				std::cout<<"INDEX out of range"<<std::endl;
-				exit(0);
+				exit(1);
 				
 			}
 		}
@@ -105,14 +105,17 @@ class smartarray
 int main()
 {
 	smartarray ar;
+	std::cout<<ar[-1]<<std::endl;
 	ar.append(15);
 	ar.append(15);
 	ar.append(15);
 	ar.append(15);
 	ar.append(15);
 	ar.append(15);
-	ar.del(5);
-	ar[4]=25;
-	ar.print();
+
+	//ar.del(-1);
+	//ar[4]=25;
+	//ar[15]=25;
+	//ar.print();
 	return 0;	
 }

@@ -3,6 +3,7 @@
 #include <cmath>
 //1
 /*void random_numbers(int* n);
+bool check_is_digit(std::string str);
 void num_el(int num,int* n);
 int main () 
 {
@@ -32,7 +33,16 @@ void random_numbers(int* n)
 	{
 		std::cout<<"Enter number-";
 		int num;
-		std::cin>>num;
+		std::string num1;
+		std::cin>>num1;
+		if(check_is_digit(num1))
+		{
+			num=stoi(num1);
+		}
+		else
+		{
+			continue;
+		}
 		n[i]=num;
 	}
 
@@ -45,11 +55,34 @@ void num_el(int num,int* n)
 		n[el]+=1;
 		num=num/10;
 	}
+}
+bool check_is_digit(std::string str)
+{
+        bool a=true;
+        if(str[0]=='-')
+        {
+                a=true;
+        }
+        if(str[0]=='0')
+        {
+                a=false;
+                return a;
+        }
+        for(int i=1;i<str.size();i++)
+        {
+                if(!isdigit(str[i]))
+                {
+                        a=false;
+                        return a;
+
+                }
+
+        }
+        return a;
 }*/
-
-
 //2
-/*void random_numbers(int* n,int* n1);
+/*bool check_is_digit(std::string str);
+void random_numbers(int* n,int* n1);
 void sorting_el(int* n);
 int main()
 {
@@ -57,10 +90,23 @@ int main()
 	int random_n1[10]={};
 	random_numbers(random_n,random_n1);
 	sorting_el(random_n1);
+	//for(int i=0;i<10;i++)
+	//{
+	//	std::cout<<random_n1[i]<<",";
+	//}
+	//std::cout<<std::endl;
+	//for(int i=0;i<10;i++)
+	//{
+	//	std::cout<<random_n[i]<<",";
+	//}
 	bool flag=true;
 	for(int i=0;i<10;i++)
 	{
-		if(random_n[i]!=random_n1[i])
+		if(random_n[i]==random_n1[i])
+		{
+			flag=true;
+		}
+		else
 		{
 			flag=false;
 			break;
@@ -69,23 +115,29 @@ int main()
 	
 	bool flag1=true;
 	int a=0;
-	if(flag=false){
-		flag=true;
+	if(flag==false){
 		for(int i=9;i>=0;i--)
 		{
-			if(random_n1[i]!=random_n[a])
+			if(random_n1[i]==random_n[a])
 			{
-				flag=false;
+				flag1=true;
+			}
+			else
+			{
+				flag1=false;
 				break;
 			}
 			a+=1;
 		}
 	}
-	if(flag || flag1)
+	if(flag or flag1)
 	{
 		std::cout<<"YES"<<std::endl;
 	}
-
+	else
+	{
+		std::cout<<"NO"<<std::endl;
+	}
 	return 0;
 }
 
@@ -95,8 +147,16 @@ void random_numbers(int* n,int* n1)
 	{
 		std::cout<<"Enter number-";
 		int num;
-		std::cin>>num;
-		n[i]=num;
+		std::string num1;
+		std::cin>>num1;
+		if(check_is_digit(num1))
+		{
+			num=stoi(num1);
+		}
+		else
+		{
+			continue;
+		}
 		n1[i]=num;
 	}
 
@@ -117,9 +177,34 @@ void sorting_el(int* n)
 		
 	}
 
+}
+bool check_is_digit(std::string str)
+{
+        bool a=true;
+        if(str[0]=='-')
+        {
+                a=true;
+        }
+        if(str[0]=='0')
+        {
+                a=false;
+                return a;
+        }
+        for(int i=1;i<str.size();i++)
+        {
+                if(!isdigit(str[i]))
+                {
+                        a=false;
+                        return a;
+
+                }
+
+        }
+        return a;
 }*/
 //3
-/*void random_numbers(int* n);
+/*bool check_is_digit(std::string str);
+void random_numbers(int* n);
 void sorting_el(int* n);
 int main ()
 {
@@ -141,7 +226,16 @@ void random_numbers(int* n)
 	{
 		std::cout<<"Enter number-";
 		int num;
-		std::cin>>num;
+		std::string num1;
+		std::cin>>num1;
+		if(check_is_digit(num1))
+		{
+			num=stoi(num1);
+		}
+		else
+		{
+			continue;
+		}
 		n[i]=num;
 	}
 
@@ -162,9 +256,33 @@ void sorting_el(int* n)
 		
 	}
 
-}*/
-//4
+}
+bool check_is_digit(std::string str)
+{
+        bool a=true;
+        if(str[0]=='-')
+        {
+                a=true;
+        }
+        if(str[0]=='0')
+        {
+                a=false;
+                return a;
+        }
+        for(int i=1;i<str.size();i++)
+        {
+                if(!isdigit(str[i]))
+                {
+                        a=false;
+                        return a;
 
+                }
+
+        }
+        return a;
+}*/
+
+//4
 /*int main()
 {
 	int* arr=new int[10] {1,2,3,4,5,6,7,8,9,10};
@@ -203,30 +321,78 @@ void sorting_el(int* n)
 	return 0;
 }*/
 //5
-/*int main()
+/*bool check_is_digit(std::string str);
+int main()
 {
 	int arr[10]={1,2,3,4,5,6,7,8,9,10};
 	std::cout<<"Enter number K-";
 	int num;
-	std::cin>>num;
+	std::string num11;
+	std::string num22;
+	std::cin>>num11;
 	std::cout<<"Enter M position-";
 	int num1;
-	std::cin>>num1;
+	std::cin>>num22;
+	if(check_is_digit(num11) and check_is_digit(num22))
+	{
+		num=stoi(num11);
+		num1=stoi(num22);
+	}
+	else
+	{
+		std::cout<<"INPUTS is not digit"<<std::endl;
+		return 0;
+	}
 	arr[0]=num;
 	arr[9]=num;
-	if(num1<=10)
+	if(num1<=10 and num1>=0)
 	{
 		arr[num1]=num;
 	}
+}
+bool check_is_digit(std::string str)
+{
+        bool a=true;
+        if(str[0]=='-')
+        {
+                a=true;
+        }
+        if(str[0]=='0')
+        {
+                a=false;
+                return a;
+        }
+        for(int i=1;i<str.size();i++)
+        {
+                if(!isdigit(str[i]))
+                {
+                        a=false;
+                        return a;
+
+                }
+
+        }
+        return a;
 }*/
 
 //6
-/*int main ()
+/*bool check_is_digit(std::string str);
+int main ()
 {
 	int arr[10]={2,4,5,8,10,15,25,24,17,36};
 	int num;
+	std::string num1;
 	std::cout<<"Texasharzhi qanak-";
-	std::cin>>num;
+	std::cin>>num1;
+	if(check_is_digit(num1))
+	{
+		num=stoi(num1);
+	}
+	if(num<0)
+	{
+		std::cout<<"INPUT will >0"<<std::endl;
+		return 0;
+	}
 	int ind=arr[0];
 	int ind1=arr[1];
 	for(int k=0;k<num;k++)
@@ -246,18 +412,55 @@ void sorting_el(int* n)
 	}
 	std::cout<<std::endl;
 	return 0;	
-}*/
+}
+bool check_is_digit(std::string str)
+{
+        bool a=true;
+        if(str[0]=='-')
+        {
+                a=true;
+        }
+        if(str[0]=='0')
+        {
+                a=false;
+                return a;
+        }
+        for(int i=1;i<str.size();i++)
+        {
+                if(!isdigit(str[i]))
+                {
+                        a=false;
+                        return a;
 
+                }
+
+        }
+        return a;
+}*/
 //7
-/*int zuyg_c(int n);
+/*bool check_is_digit(std::string str);
+int zuyg_c(int n);
 int return_karg(int n);
 bool check_is_prime(int n);
 int six_dec(int n);
 int main()
 {
 	int num;
+	std::string num1;
 	std::cout<<"Enter number-";
-	std::cin>>num;
+	std::cin>>num1;
+	if(check_is_digit(num1))
+	{
+		num=stoi(num1);
+	}
+	else
+	{
+		std::cout<<"INPUT is not digit"<<std::endl;
+	}
+	if(num<=0)
+	{
+		return 0;
+	}
 	int ret=return_karg(num);
 	int bazh_c=0;
 	for(int i=1;i<num/2;i++)
@@ -273,7 +476,7 @@ int main()
 	}
 	int zer_c=six_dec(num);
 	int harevan_zuyg=zuyg_c(num);
-	std::cout<<harevan_zuyg<<"---"<<std::endl;
+	//std::cout<<harevan_zuyg<<std::endl;
 	//if(num%2!=0)
 	//{
 	//	harevan_zuyg+=2;
@@ -345,18 +548,58 @@ int six_dec(int n )
 	}
 	return zer_c;
 
-}*/
+}
+bool check_is_digit(std::string str)
+{
+        bool a=true;
+        if(str[0]=='-')
+        {
+                a=true;
+        }
+        if(str[0]=='0')
+        {
+                a=false;
+                return a;
+        }
+        for(int i=1;i<str.size();i++)
+        {
+                if(!isdigit(str[i]))
+                {
+                        a=false;
+                        return a;
 
+                }
+
+        }
+        return a;
+}*/
 //8
 /*void true_false(int n,int k);
+bool check_is_digit(std::string str);
 std::string num_format(int n,int k);
 int main()
 {
 	int n,m;
+	std::string n1,m1;
 	std::cout<<"Enter N-";
-	std::cin>>n;
+	std::cin>>n1;
 	std::cout<<"Enter k-";
-	std::cin>>m;
+	std::cin>>m1;
+	if(check_is_digit(n1) and check_is_digit(m1))
+	{
+		n=stoi(n1);
+		m=stoi(m1);
+	}
+	else
+	{
+		std::cout<<"INPUT numbers is digit"<<std::endl;
+		return 0;
+	}
+	if(n<=0 or m<=0)
+	{	
+		std::cout<<"INPUTS wil >0"<<std::endl;
+		return 0;
+	}
 	true_false(n,m);
 	if(m<10)
 	{
@@ -401,8 +644,31 @@ std::string num_format(int n,int k)
 		n=n/k;
 	}
 	return str;
-}*/
+}
+bool check_is_digit(std::string str)
+{
+        bool a=true;
+        if(str[0]=='-')
+        {
+                a=true;
+        }
+        if(str[0]=='0')
+        {
+                a=false;
+                return a;
+        }
+        for(int i=1;i<str.size();i++)
+        {
+                if(!isdigit(str[i]))
+                {
+                        a=false;
+                        return a;
 
+                }
+
+        }
+        return a;
+}*/
 /*bool check(int n,int k)
 int main()
 {

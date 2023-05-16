@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 //1
-/*bool check_is_digit(std::string str);
+bool check_is_digit(std::string str);
 int main () 
 {
         int num;
@@ -54,7 +54,7 @@ bool check_is_digit(std::string str)
 
         }
         return a;
-}*/
+}
 
 //2
 /*bool check_is_digit(std::string str);
