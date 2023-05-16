@@ -2,18 +2,20 @@
 #include "cpu.hpp"
 void Ram::write(int ind,int value)
 {
-	arr.push_back(value);
+	arr[ind] = value;
 }
 int Ram::read(int ind)
 {
      return arr[ind];
 }
-
 int Ram::ram_size()
 {
     return arr.size();
 }
-		
+void Ram::resize(int count)
+{
+	arr.resize(count);	
+}		
 void Register::write(int ind,int value)
 {
 	arr[ind] = value;
@@ -26,14 +28,32 @@ int Register::reg_size()
 {
         return arr.size();
 }
-void CU::run(Ram& ram,Register& reg)
+void Alu::execute(Ram& ram,Register& reg)
 {
-	int ins_c = ram.ram_size();
-	for(int i = 0;i < ins_c-2;i++)
+        switch(reg.read(4))
+        {
+        	case 0:
+                         ram.write(reg.read(3),reg.read(5)+reg.read(6));
+                         break;
+                case 1:
+                         ram.write(reg.read(3),reg.read(5)-reg.read(6));
+                         break;
+                case 2:
+                         ram.write(reg.read(3),reg.read(5)/reg.read(6));
+                         break;
+                case 3:
+                         ram.write(reg.read(3),reg.read(5)*reg.read(6));
+                         break;
+        }
+}
+void CU::run(Ram& ram,Register& reg,Alu& alu)
+{
+	int ins_c = ((ram.ram_size()-2)/2);	
+	for(int i = 0;i < ins_c;i++)
 	{
 		fetch(ram,reg,i);
 		decode(reg.read(0),reg,ram,ins_c);
-		execute(ram,reg,i);
+		execute(ram,reg,alu);
 	}
 }
 void CU::fetch(Ram& ram,Register& reg,int ind)
@@ -48,40 +68,30 @@ void CU::decode(int value,Register& reg,Ram& ram,int size)
 		reg.write(i,a);
 		value = value >> 4;
 	}
-		reg.write(5,ram.read(size-2));
-		reg.write(6,ram.read(size-1));
+		reg.write(5,ram.read(size));
+		reg.write(6,ram.read(size+1));
 }
-void CU::execute(Ram& ram,Register& reg,int ind)
+void CU::execute(Ram& ram,Register& reg,Alu& alu)
 {
-	switch(reg.read(4))
-	{
-		case 0:
-				ram.write(ind,reg.read(5)+reg.read(6));
-				break;
-		case 1:
-				ram.write(ind,reg.read(5)-reg.read(6));
-				break;
-		case 2:
-				ram.write(ind,reg.read(5)/reg.read(6));
-				break;
-		case 3:
-				ram.write(ind,reg.read(5)*reg.read(6));
-				break;
-	}
-}
-		
-void CPU::load(std::vector<int> arr,int num1,int num2)
+	alu.execute(ram,reg);
+}		
+void CPU::load(std::vector<int> arr)
 {
+	ram.resize((arr.size()*2)+2);
 	for(int i = 0;i < arr.size();i++)
 	{
 		ram.write(i,arr[i]);
 	}
-	ram.write(arr.size(),num1);
-	ram.write(arr.size()+1,num2);
+}
+void CPU::state(int num1,int num2)
+{
+	int c = ((ram.ram_size()-2)/2);
+        ram.write(c,num1);
+        ram.write(c+1,num2);
 }
 void CPU::execute()
 {
-	cu.run(ram,reg);
+	cu.run(ram,reg,alu);
 }
 void CPU::print()
 {
