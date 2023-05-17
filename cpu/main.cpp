@@ -1,6 +1,4 @@
 #include "cpu.hpp"
-#include <vector>
-
 int main()
 {
 	std::vector<int> arr = {1605,5957,10309,14661};
